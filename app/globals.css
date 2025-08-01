@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 5%;           /* Fast schwarz */
+    --foreground: 0 0% 95%;          /* Sehr helles Grau */
+
+    --card: 0 0% 10%;                /* Dunkles Grau */
+    --card-foreground: 0 0% 95%;
+
+    --popover: 0 0% 12%;             /* Etwas heller als card */
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 142 70% 45%;          /* Grüner Akzent */
+    --primary-foreground: 0 0% 5%;   /* Text auf grünem Button: fast schwarz */
+
+    --secondary: 0 0% 20%;           /* Mittelgrau */
+    --secondary-foreground: 0 0% 90%;
+
+    --muted: 0 0% 25%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 0 0% 30%;              /* Grauer Akzent */
+    --accent-foreground: 0 0% 95%;
+
+    --destructive: 0 60% 40%;        /* Dunkles Rot */
+    --destructive-foreground: 0 0% 95%;
+
+    --border: 0 0% 20%;              /* Grauer Border */
+    --input: 0 0% 20%;
+    --ring: 142 70% 45%;             /* Grün für Focus */
+
+    --chart-1: 142 70% 45%;          /* Grüner Akzent */
+    --chart-2: 0 0% 50%;             /* Grau für andere Daten */
+    --chart-3: 0 0% 35%;
+    --chart-4: 0 0% 25%;
+    --chart-5: 0 0% 15%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.slider {
+  transition: transform 0.3s ease-in-out, left 0.3s ease-in-out;
+}

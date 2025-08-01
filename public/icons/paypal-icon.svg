@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="980px" height="680px" viewBox="0 0 980 680" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>WW PayPal</title>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#EDEDED" offset="100%"></stop>
+        </linearGradient>
+        <rect id="path-2" x="2.84217094e-14" y="0" width="900" height="600" rx="80"></rect>
+        <filter x="-6.7%" y="-10.0%" width="113.3%" height="120.0%" filterUnits="objectBoundingBox" id="filter-3">
+            <feMorphology radius="2.5" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="0" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="17.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <polygon id="path-4" points="0 0 327.955556 0 327.955556 385 0 385"></polygon>
+    </defs>
+    <g id="WW-PayPal" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(40, 40)">
+            <g id="Rectangle">
+                <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+                <use fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#path-2"></use>
+            </g>
+            <g id="Logo" transform="translate(243, 50)">
+                <path d="M353.977778,115 C353.977778,176.933333 296.822222,250 210.344444,250 L127.044444,250 L122.955556,275.8 L103.522222,400 L0,400 L62.2777778,0 L230,0 C286.477778,0 330.911111,31.4777778 347.277778,75.2222222 C352,87.9444444 354.266667,101.433333 353.977778,115" id="Fill-1" fill="#002991"></path>
+                <g id="Group-5" transform="translate(87.0444, 115)">
+                    <mask id="mask-5" fill="white">
+                        <use xlink:href="#path-4"></use>
+                    </mask>
+                    <g id="Clip-4"></g>
+                    <path d="M326.6,115 C315.188889,184.344444 255.166667,235.166667 184.888889,235 L127.044444,235 L102.966667,385 L0,385 L16.4777778,285 L35.9222222,160.8 L40,135 L123.3,135 C209.666667,135 266.933333,61.9333333 266.933333,0 C309.433333,21.9333333 334.211111,66.2555556 326.6,115" id="Fill-3" fill="#60CDFF" mask="url(#mask-5)"></path>
+                </g>
+                <path d="M353.977778,115 C336.155556,105.677778 314.544444,100 291.022222,100 L150.577778,100 L127.044444,250 L210.344444,250 C296.711111,250 353.977778,176.933333 353.977778,115" id="Fill-6" fill="#008CFF"></path>
+            </g>
+        </g>
+    </g>
+</svg>
