@@ -13,14 +13,14 @@ export default function NotFound() {
   return (
     <section className="relative min-h-[93vh] flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-black to-green-950" />
-        <div className="absolute inset-0 bg-[url('/images/minecraft.jpg')] bg-cover bg-center opacity-60 mix-blend-overlay" />
+        <div className="absolute inset-0 bg-gradient-to-br from-black to-transparent" />
+        <div className="absolute inset-0 bg-[url('/images/background-not-found.png')] bg-cover bg-center opacity-60 mix-blend-overlay" />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
       </div>
 
       <div className="container relative z-10 text-center max-w-2xl px-4">
         <div className={`space-y-6 ${loaded ? "animate-fadeIn" : "opacity-0"}`}>
-          <h1 className="text-5xl font-extrabold tracking-tight leading-tight text-green-400">
+          <h1 className="text-5xl font-extrabold tracking-tight leading-tight text-neutral-400">
             404 : Page not found
           </h1>
           <p className="text-lg text-muted-foreground">
@@ -28,7 +28,14 @@ export default function NotFound() {
           </p>
           <Link
             href="/"
-            className="inline-block mt-4 px-6 py-3 bg-green-600 text-white rounded-md hover:bg-green-700 transition"
+            className="                font-minecraft inline-flex items-center justify-center gap-x-2
+                px-5 py-3 h-12 text-lg ring-2 ring-inset
+                border-amber-600 bg-amber-500 text-white
+                shadow-[0_4px_theme(colors.amber.600)]
+                ring-amber-400
+                hover:translate-y-0.5 hover:bg-amber-400
+                hover:shadow-[0_2px_theme(colors.amber.500)]
+                hover:ring-amber-300"
           >
             Return to Homepage
           </Link>

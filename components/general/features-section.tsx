@@ -2,33 +2,33 @@
 
 import { useState, useEffect } from 'react';
 import { 
-  Sliders,
-  LayoutDashboard,
+  HandCoins,
+  Wrench,
   ServerCog,
-  Coins
+  Handshake
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const features = [
   {
-    icon: Sliders,
-    title: "Flexible Usage",
-    description: "Change server size anytime. Downgrades give you Zenth back for unused time - only pay for what you really use."
+    icon: HandCoins,
+    title: "Economy System",
+    description: "Earn currency through quests, trading, and various in-game activities. A dynamic system designed to reward your efforts."
   },
   {
-    icon: LayoutDashboard,
-    title: "Smart Panel",
-    description: "Manage all your servers in one clean, user-friendly interface built for gamers and power users alike."
+    icon: Wrench,
+    title: "Fully Customized",
+    description: "A carefully crafted custom modpack, finely tuned with love for a unique gameplay experience."
   },
   {
     icon: ServerCog,
-    title: "Custom Projects",
-    description: "Save entire server configurations and setups to quickly reuse them for events, resets, or new deployments."
+    title: "Fast & Reliable Server",
+    description: "A high-performance server built for stability and speed - always pushing to deliver the best experience possible."
   },
   {
-    icon: Coins,
-    title: "Zenth Credits",
-    description: "Pay for all upgrades, changes, and resources with Zenth - automatically used based on your purchases."
+    icon: Handshake,
+    title: "Amazing Community",
+    description: "Join parties, trade with others, or start your own project. It's the players who bring Brasswork's world to life."
   }
 ];
 
@@ -53,13 +53,12 @@ export function FeaturesSection() {
   }, []);
 
   return (
-    <section className="py-20 bg-gradient-to-b from-background to-green-950/10">
+    <section className="py-20">
       <div className="container">
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Why Choose Our Hosting?</h2>
-          <p className="text-muted-foreground text-lg">
-            Our game server hosting is designed to be flexible, cost-effective, and powerful,
-            giving you full control over your gaming experience.
+        <div className="max-w-4xl mx-auto text-center mb-16">
+          <h2 className="text-3xl md:text-4xl mb-4 uppercase font-bold font-minecraft">A cooperative Minecraft server</h2>
+          <p className="text-muted-foreground text-lg max-w-4xl">
+            Our public server thrives on cooperation between players - express your creativity freely, with each other.
           </p>
         </div>
 
@@ -76,8 +75,8 @@ export function FeaturesSection() {
               )}
               style={{ transitionDelay: `${idx * 100}ms` }}
             >
-              <div className="h-12 w-12 bg-green-900/50 flex items-center justify-center rounded-lg mb-5">
-                <feature.icon className="h-6 w-6 text-green-400" />
+              <div className="h-12 w-12 bg-amber-400/60 flex items-center justify-center rounded-lg mb-5">
+                <feature.icon className="h-6 w-6 text-neutral-100" />
               </div>
               <h3 className="font-bold text-xl mb-3">{feature.title}</h3>
               <p className="text-muted-foreground">{feature.description}</p>

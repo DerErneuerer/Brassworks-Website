@@ -6,92 +6,52 @@ import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import {
   NavigationMenu,
-  NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Menu } from 'lucide-react';
 import { Logo } from '@/components/logo';
-import { User } from 'lucide-react';
-
-const components: { title: string; href: string; description: string }[] = [
-  {
-    title: 'General Plans',
-    href: '/services/general-plans',
-    description: 'Flexible plans for every need with our project management system.',
-  },
-  {
-    title: 'Game Server',
-    href: '/services/game-server',
-    description: 'High-performance game servers for smooth online play.',
-  },
-  {
-    title: 'Discord Bots',
-    href: '/services/discord-bots',
-    description: 'Custom bots to automate and enhance your Discord server.',
-  },
-];
 
 export function Header() {
-  const isLoggedIn = true;
-
   return (
     <>
-      <header className="sticky top-0 z-50 w-full transition-colors duration-300 bg-card/50 backdrop-blur supports-[backdrop-filter]:bg-card/50 border-b">
+      <header className="fixed top-0 z-50 w-full transition-colors duration-300 bg-card/50 backdrop-blur supports-[backdrop-filter]:bg-card/50 border-b">
         <div className="container flex h-16 items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
-            <Logo className="h-9 w-9" />
-            <span className="font-bold text-lg leading-none">572</span>
+            <Logo className="h-11 w-auto" />
           </Link>
 
           <div className="hidden md:flex">
             <NavigationMenu>
-              <NavigationMenuList>
+              <NavigationMenuList className="gap-5">
                 <NavigationMenuItem>
                   <NavigationMenuLink asChild>
                     <Link href="/" className={navigationMenuTriggerStyle()}>
-                      Home
+                      Seasons
                     </Link>
                   </NavigationMenuLink>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger>Services</NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                      {components.map((component) => (
-                        <ListItem
-                          key={component.title}
-                          title={component.title}
-                          href={component.href}
-                        >
-                          {component.description}
-                        </ListItem>
-                      ))}
-                    </ul>
-                  </NavigationMenuContent>
+                  <NavigationMenuLink asChild>
+                    <Link href="/news" className={navigationMenuTriggerStyle()}>
+                      Modpack
+                    </Link>
+                  </NavigationMenuLink>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                   <NavigationMenuLink asChild>
                     <Link href="/news" className={navigationMenuTriggerStyle()}>
-                      News
+                      Gallery
                     </Link>
                   </NavigationMenuLink>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                   <NavigationMenuLink asChild>
                     <Link href="/support" className={navigationMenuTriggerStyle()}>
-                      Support
-                    </Link>
-                  </NavigationMenuLink>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <NavigationMenuLink asChild>
-                    <Link href="/docs" className={navigationMenuTriggerStyle()}>
-                      Docs
+                      Our Server
                     </Link>
                   </NavigationMenuLink>
                 </NavigationMenuItem>
@@ -99,25 +59,21 @@ export function Header() {
             </NavigationMenu>
           </div>
 
-          <div className="items-center gap-4 hidden md:flex">
-            {isLoggedIn ? (
-              <Link href="/account">
-                <Button variant="ghost" size="icon" className="rounded-full border border-neutral-600">
-                  <User className="h-5 w-5" />
-                </Button>
-              </Link>
-            ) : (
-              <>
-                <Link href="/login">
-                  <Button variant="ghost">Login</Button>
-                </Link>
-                <Link href="/signup">
-                  <Button variant="default" className="bg-green-600 hover:bg-green-700">
-                    Get Started
-                  </Button>
-                </Link>
-              </>
-            )}
+          <div className="items-center hidden md:flex ml-20">
+            <Link href="/play-now">
+              <Button variant="default" className="font-minecraft relative mb-1 inline-flex items-center justify-center gap-x-2
+                px-3.5 py-1.5 text-sm ring-2 ring-inset
+                border-amber-600 bg-amber-500 text-white
+                shadow-[0_4px_theme(colors.amber.600)]
+                ring-amber-400
+                hover:translate-y-0.5 hover:bg-amber-400
+                hover:shadow-[0_2px_theme(colors.amber.500)]
+                hover:ring-amber-300
+                forced-colors:[--btn-icon:ButtonText]
+                forced-colors:data-hover:[--btn-icon:ButtonText]">
+                Play Now
+              </Button>
+            </Link>
           </div>
 
           <div className="md:hidden">
@@ -130,50 +86,32 @@ export function Header() {
               <SheetContent side="right" className="w-[80%] sm:w-[385px]">
                 <nav className="flex flex-col gap-4 mt-8">
                   <Link href="/" className="px-2 py-1 rounded-md hover:bg-muted">
-                    Home
-                  </Link>
-                  <Link href="/services/general-plans" className="px-2 py-1 rounded-md hover:bg-muted">
-                    General Plans
-                  </Link>
-                  <Link href="/services/game-server" className="px-2 py-1 rounded-md hover:bg-muted">
-                    Game Server
-                  </Link>
-                  <Link href="/services/discord-bots" className="px-2 py-1 rounded-md hover:bg-muted">
-                    Discord Bots
+                    Seasons
                   </Link>
                   <Link href="/news" className="px-2 py-1 rounded-md hover:bg-muted">
-                    News
+                    Modpack
                   </Link>
                   <Link href="/support" className="px-2 py-1 rounded-md hover:bg-muted">
-                    Support
+                    Gallery
                   </Link>
                   <Link href="/features" className="px-2 py-1 rounded-md hover:bg-muted">
-                    Features
-                  </Link>
-                  <Link href="/docs" className="px-2 py-1 rounded-md hover:bg-muted">
-                    Docs
+                    Our Server
                   </Link>
                   <div className="flex flex-col gap-2 mt-4">
-                    {isLoggedIn ? (
-                      <Link href="/account">
-                        <Button variant="outline" className="w-full">
-                          Account
-                        </Button>
-                      </Link>
-                    ) : (
-                      <>
-                        <Link href="/login">
-                          <Button variant="outline" className="w-full">
-                            Login
-                          </Button>
-                        </Link>
-                        <Link href="/signup">
-                          <Button variant="default" className="w-full bg-green-600 hover:bg-green-700">
-                            Get Started
-                          </Button>
-                        </Link>
-                      </>
-                    )}
+                    <Link href="/play-now">
+                      <Button variant="default" className="font-minecraft relative mb-1 inline-flex items-center justify-center gap-x-2
+                        px-3.5 py-1.5 text-sm ring-2 ring-inset
+                        border-amber-600 bg-amber-500 text-white
+                        shadow-[0_4px_theme(colors.amber.600)]
+                        ring-amber-400
+                        hover:translate-y-0.5 hover:bg-amber-400
+                        hover:shadow-[0_2px_theme(colors.amber.500)]
+                        hover:ring-amber-300
+                        forced-colors:[--btn-icon:ButtonText]
+                        forced-colors:data-hover:[--btn-icon:ButtonText]">
+                        Play Now
+                      </Button>
+                    </Link>
                   </div>
                 </nav>
               </SheetContent>

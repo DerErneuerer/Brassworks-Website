@@ -49,17 +49,6 @@ export function Header() {
         <div className="hidden md:flex">
           <NavigationMenu>
             <NavigationMenuList>
-              <NavigationMenuItem>
-                <NavigationMenuLink href="/terms-of-service" className={navigationMenuTriggerStyle()}>
-                  Terms of Service
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-              <span className="px-2 text-sm text-muted-foreground">•</span>
-              <NavigationMenuItem>
-                <NavigationMenuLink href="/privacy-policy" className={navigationMenuTriggerStyle()}>
-                  Privacy Policy
-                </NavigationMenuLink>
-              </NavigationMenuItem>
               <span className="px-2 text-sm text-muted-foreground">•</span>
               <NavigationMenuItem>
                 <NavigationMenuLink href="/legal-notice" className={navigationMenuTriggerStyle()}>
