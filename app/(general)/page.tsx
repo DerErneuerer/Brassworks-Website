@@ -1,7 +1,7 @@
 import { HeroSection } from '@/components/general/hero-section';
 import { FeaturesSection } from '@/components/general/features-section';
 import { TeamList } from "@/components/general/team-list";
-import { ModpackFeaturesSection } from '@/components/general/modpack-features-section';
+import { CommunitySection } from '@/components/general/community-section';
 
 export default function Home() {
   return (
@@ -9,7 +9,7 @@ export default function Home() {
       <HeroSection/>
       <FeaturesSection/>
       <TeamList/>
-      <ModpackFeaturesSection/>
+      <CommunitySection/>
     </div>
   );
 }

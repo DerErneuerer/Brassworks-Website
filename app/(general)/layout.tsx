@@ -9,7 +9,7 @@ import { Toaster } from '@/components/ui/toaster';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: '572 : HOSTING : HOME',
+  title: 'Brassworks SMP',
   description:
     'Powerful and customizable game server hosting with dynamic scaling, smart resource management, and easy setup for all skill levels.',
 };

@@ -66,6 +66,10 @@ export function Footer() {
             <Link href="/legal-notice" className="text-sm text-muted-foreground hover:text-foreground transition">
               Legal Notice
             </Link>
+            <span className="px-2 text-sm text-muted-foreground">•</span>
+            <Link href="/privacy-policy" className="text-sm text-muted-foreground hover:text-foreground transition">
+              Privacy Policy
+            </Link>
           </div>
         </div>
       </div>
