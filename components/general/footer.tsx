@@ -1,8 +1,7 @@
 import Link from 'next/link';
 import { Logo } from '@/components/logo';
-import { Facebook, Twitter, Github } from 'lucide-react';
+import { Map, Coffee } from 'lucide-react';
 import { Icons } from '../icons';
-import Tooltip from '../tooltip';
 
 export function Footer() {
   return (
@@ -17,21 +16,17 @@ export function Footer() {
               Our public server thrives on cooperation between players - express your creativity freely, with each other.
             </p>
             <div className="flex gap-4 mt-6">
-              <Link href="https://twitter.com" className="text-muted-foreground hover:text-foreground transition">
-                <Twitter className="h-5 w-5" />
-                <span className="sr-only">Twitter</span>
-              </Link>
-              <Link href="https://facebook.com" className="text-muted-foreground hover:text-foreground transition">
-                <Facebook className="h-5 w-5" />
-                <span className="sr-only">Facebook</span>
-              </Link>
-              <Link href="https://instagram.com" className="text-muted-foreground hover:text-foreground transition">
-                <Github className="h-5 w-5" />
-                <span className="sr-only">Instagram</span>
-              </Link>
-              <Link href="https://discord.com" className="text-muted-foreground hover:text-foreground transition">
+              <Link href="https://discord.gg/neqEBnPVgY" className="text-muted-foreground hover:text-foreground transition">
                 <Icons.discord className="h-5 w-5" />
                 <span className="sr-only">Discord</span>
+              </Link>
+              <Link href="" className="text-muted-foreground hover:text-foreground transition">
+                <Coffee className="h-5 w-5" />
+                <span className="sr-only">Kofi</span>
+              </Link>
+              <Link href="" className="text-muted-foreground hover:text-foreground transition">
+                <Map className="h-5 w-5" />
+                <span className="sr-only">Live Map</span>
               </Link>
             </div>
           </div>
