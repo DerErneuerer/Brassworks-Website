@@ -15,7 +15,7 @@ export function TeamList() {
           </p>
         </div>
 
-        <div className="mx-48 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-8">
+        <div className="mx-20 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8">
           {getTeamMembers().map((member, idx) => {
             const Icon = roleIcons[member.role];
             return (

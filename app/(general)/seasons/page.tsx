@@ -15,7 +15,7 @@ export default function SeasonsPage() {
             name: "The Beginning",
             description:
                 "Our very first season! Featuring classic Create contraptions, community builds, and the foundation of what Brassworks is today.",
-            imageUrl: "/images/season1.png",
+            imageUrl: "/seasons/season1.png",
             modpackOptions: [
                 { name: "Prism Launcher", url: "https://prismlauncher.org" },
                 { name: "Modrinth", url: "https://modrinth.com/modpack/your-modpack" },
@@ -27,7 +27,7 @@ export default function SeasonsPage() {
             name: "New World",
             description:
                 "Season Two lifts off with live map, brand-new mods, and a fresh world to explore. Bigger, brighter, bolder.",
-            imageUrl: "/images/season2.png",
+            imageUrl: "/seasons/season2.png",
             modpackOptions: [
                 { name: "Prism Launcher", url: "https://prismlauncher.org" },
                 {
@@ -42,7 +42,7 @@ export default function SeasonsPage() {
     // Smooth modal transition handler
     const closeModal = () => {
         setShowModal(false);
-        setTimeout(() => setOpenIndex(null), 250); // matches animation duration
+        setTimeout(() => setOpenIndex(null), 250);
     };
 
     useEffect(() => {
@@ -71,12 +71,12 @@ export default function SeasonsPage() {
                             key={index}
                             className="bg-white dark:bg-zinc-900 rounded-xl shadow-lg overflow-hidden flex flex-col"
                         >
-                            <div className="relative w-full h-60">
+                            <div className="relative mx-10 h-60 ">
                                 <Image
                                     src={season.imageUrl}
                                     alt={season.title}
                                     layout="fill"
-                                    objectFit="cover"
+                                    objectFit="contain"
                                     className="rounded-t-xl"
                                 />
                             </div>
@@ -139,7 +139,6 @@ export default function SeasonsPage() {
                             showModal ? "opacity-100 scale-100" : "opacity-0 scale-95"
                         }`}
                     >
-                        {/* Close Button */}
                         <button
                             onClick={closeModal}
                             className="absolute top-3 right-3 text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition"
@@ -148,7 +147,6 @@ export default function SeasonsPage() {
                             <X className="w-5 h-5" />
                         </button>
 
-                        {/* Modal Content */}
                         <h3 className="text-lg font-bold font-minecraft mb-4 text-zinc-800 dark:text-white">
                             Download Modpack – {seasons[openIndex].title}
                         </h3>

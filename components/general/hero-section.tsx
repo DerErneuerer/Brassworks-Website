@@ -27,7 +27,7 @@ export function HeroSection() {
           alt="Brassworks Logo"
         />
 
-        <Link href="/play-now">
+        <Link target="_blank" href="https://discord.gg/neqEBnPVgY">
           <div
             className={`
               mt-10 transition-all duration-700 ease-in-out

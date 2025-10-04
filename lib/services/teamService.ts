@@ -46,7 +46,13 @@ let teamMembers: TeamMember[] = [
     role: "moderator",
     tag: "@dererneuerer",
     avatarUrl: "/avatars/dererneuerer.png",
-  }
+  },
+    {
+        name: "Float420",
+        role: "moderator",
+        tag: "@float420",
+        avatarUrl: "/avatars/float420.png",
+    }
 ];
 
 // ----------------------------------------

@@ -7,14 +7,14 @@ import { Download, ExternalLink, X } from "lucide-react";
 
 export default function Season2Page() {
     const [showModal, setShowModal] = useState(false);
-    const [modalVisible, setModalVisible] = useState(false); // für Animation
+    const [modalVisible, setModalVisible] = useState(false);
 
     const season = {
         title: "Season 2",
         name: "New World",
         description:
             "Brassworks Season Two lifts off with live map, brand-new mods, and a fresh world to explore. Bigger, brighter, bolder.",
-        imageUrl: "/images/season2.png",
+        imageUrl: "/images/banner.png",
         modpackOptions: [
             { name: "Prism Launcher", url: "https://prismlauncher.org" },
             {
@@ -24,22 +24,20 @@ export default function Season2Page() {
         ],
     };
 
-    // Modal öffnen: erst showModal true, dann modalVisible mit kleinem Delay für Animation
     const openModal = () => {
         setShowModal(true);
         setTimeout(() => setModalVisible(true), 10);
     };
 
-    // Modal schließen: Animation abspielen, dann Modal unmounten
     const closeModal = () => {
         setModalVisible(false);
-        setTimeout(() => setShowModal(false), 250); // Dauer der Animation
+        setTimeout(() => setShowModal(false), 250);
     };
 
     return (
         <section className="pb-32 pt-40 px-6 bg-background text-zinc-100">
             <div className="container max-w-7xl mx-auto text-center">
-                <div className="max-w-4xl mx-auto mb-20">
+                <div className="max-w-4xl mx-auto mb-16">
                     <h1 className="font-minecraft uppercase text-3xl md:text-4xl font-bold mb-2">
                         Our Modpack - Season 2
                     </h1>
@@ -48,20 +46,16 @@ export default function Season2Page() {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-                    {/* Bild links */}
-                    <div className="rounded-xl overflow-hidden shadow-lg">
-                        <Image
-                            src={season.imageUrl}
-                            alt={`${season.name} Modpack`}
-                            width={700}
-                            height={400}
-                            className="object-cover rounded-xl"
-                            priority
-                        />
-                    </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-20 max-w-5xl mx-auto">
+                    <Image
+                        src={season.imageUrl}
+                        alt={`${season.name} Modpack`}
+                        width={700}
+                        height={600}
+                        className="object-cover rounded-xl shadow-lg mt-12"
+                        priority
+                    />
 
-                    {/* How to Install rechts */}
                     <div>
                         <h2 className="font-minecraft text-3xl font-bold mb-6 text-center md:text-left">
                             How to Install
@@ -102,7 +96,7 @@ export default function Season2Page() {
                     </div>
                 </div>
 
-                <div className="mt-14 flex justify-center">
+                <div className="mt-16 flex justify-center">
                     <button
                         onClick={openModal}
                         className="
@@ -119,7 +113,7 @@ export default function Season2Page() {
                 </div>
             </div>
 
-            {/* MODAL */}
+            {/* --- MODAL --- */}
             {showModal && (
                 <div
                     className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-sm"
@@ -131,7 +125,6 @@ export default function Season2Page() {
                             modalVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
                         }`}
                     >
-                        {/* Close Button */}
                         <button
                             onClick={closeModal}
                             className="absolute top-3 right-3 text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition"
@@ -140,7 +133,6 @@ export default function Season2Page() {
                             <X className="w-5 h-5" />
                         </button>
 
-                        {/* Modal Content */}
                         <h3 className="text-lg font-bold font-minecraft mb-4 text-zinc-800 dark:text-white">
                             Download Modpack – {season.title}
                         </h3>

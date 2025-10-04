@@ -16,7 +16,7 @@ export function Footer() {
               Our public server thrives on cooperation between players - express your creativity freely, with each other.
             </p>
             <div className="flex gap-4 mt-6">
-              <Link href="https://discord.gg/neqEBnPVgY" className="text-muted-foreground hover:text-foreground transition">
+              <Link target="_blank" href="https://discord.gg/neqEBnPVgY" className="text-muted-foreground hover:text-foreground transition">
                 <Icons.discord className="h-5 w-5" />
                 <span className="sr-only">Discord</span>
               </Link>
@@ -24,7 +24,7 @@ export function Footer() {
                 <Coffee className="h-5 w-5" />
                 <span className="sr-only">Kofi</span>
               </Link>
-              <Link href="" className="text-muted-foreground hover:text-foreground transition">
+              <Link target="_blank" href="https://brassmap.572.at" className="text-muted-foreground hover:text-foreground transition">
                 <Map className="h-5 w-5" />
                 <span className="sr-only">Live Map</span>
               </Link>
@@ -34,7 +34,8 @@ export function Footer() {
           <div>
             <h3 className="font-medium mb-4">Seasons</h3>
             <ul className="space-y-2">
-              <li><Link href="/seasons#1" className="text-muted-foreground hover:text-foreground transition">Season 1</Link></li>
+              <li><Link href="/seasons" className="text-muted-foreground hover:text-foreground transition">Season 1</Link></li>
+              <li><Link href="/seasons" className="text-muted-foreground hover:text-foreground transition">Season 2</Link></li>
             </ul>
           </div>
           
@@ -48,7 +49,7 @@ export function Footer() {
           <div>
             <h3 className="font-medium mb-4">Server</h3>
             <ul className="space-y-2">
-              <li><Link href="/play-now" className="text-muted-foreground hover:text-foreground transition">Join our Server</Link></li>
+              <li><Link target="_blank" href="https://discord.gg/neqEBnPVgY" className="text-muted-foreground hover:text-foreground transition">Join our Server</Link></li>
             </ul>
           </div>
         </div>

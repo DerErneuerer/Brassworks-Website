@@ -43,14 +43,14 @@ export function Header() {
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                   <NavigationMenuLink asChild>
-                    <Link href="/news" className={navigationMenuTriggerStyle()}>
+                    <Link href="/gallery" className={navigationMenuTriggerStyle()}>
                       Gallery
                     </Link>
                   </NavigationMenuLink>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                   <NavigationMenuLink asChild>
-                    <Link href="/pl" className={navigationMenuTriggerStyle()}>
+                    <Link href="/#our-server" className={navigationMenuTriggerStyle()}>
                       Our Server
                     </Link>
                   </NavigationMenuLink>
@@ -60,7 +60,7 @@ export function Header() {
           </div>
 
           <div className="items-center hidden md:flex ml-20">
-            <Link href="/play-now">
+            <Link target="_blank" href="https://discord.gg/neqEBnPVgY">
               <Button variant="default" className="font-minecraft relative mb-1 inline-flex items-center justify-center gap-x-2
                 px-3.5 py-1.5 text-sm ring-2 ring-inset
                 border-amber-600 bg-amber-500 text-white

@@ -18,11 +18,10 @@ export function CommunitySection() {
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
-                    {/* Info Cards */}
                     <div className="flex flex-col gap-6 w-full h-[500px]">
                         {[
                             {
-                                href: "/map",
+                                href: "https://brassmap.572.at",
                                 icon: <Map className="h-5 w-5" />,
                                 iconBg:
                                     "bg-green-500/20 text-green-600 dark:bg-green-400/20 dark:text-green-300",
@@ -81,7 +80,6 @@ export function CommunitySection() {
                   `}
                                 >
                                     <div className="relative pl-14 pr-2">
-                                        {/* ✅ Icon bubble stays */}
                                         <div
                                             className={`absolute top-0 left-0 flex w-10 h-10 items-center justify-center rounded-full ${iconBg}`}
                                             aria-hidden="true"
@@ -89,7 +87,6 @@ export function CommunitySection() {
                                             {icon}
                                         </div>
 
-                                        {/* Title + Description */}
                                         <dt className="text-base text-zinc-800 dark:text-white font-medium">
                                             {title}
                                         </dt>
@@ -120,7 +117,6 @@ export function CommunitySection() {
                         )}
                     </div>
 
-                    {/* Discord Widget */}
                     <div className="w-full h-[500px] rounded-xl overflow-hidden shadow-lg border">
                         <iframe
                             src="https://discord.com/widget?id=1346614274415398975&theme=dark"
