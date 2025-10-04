@@ -29,14 +29,14 @@ export function Header() {
               <NavigationMenuList className="gap-5">
                 <NavigationMenuItem>
                   <NavigationMenuLink asChild>
-                    <Link href="/" className={navigationMenuTriggerStyle()}>
+                    <Link href="/seasons" className={navigationMenuTriggerStyle()}>
                       Seasons
                     </Link>
                   </NavigationMenuLink>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                   <NavigationMenuLink asChild>
-                    <Link href="/news" className={navigationMenuTriggerStyle()}>
+                    <Link href="/modpack" className={navigationMenuTriggerStyle()}>
                       Modpack
                     </Link>
                   </NavigationMenuLink>
@@ -50,7 +50,7 @@ export function Header() {
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                   <NavigationMenuLink asChild>
-                    <Link href="/support" className={navigationMenuTriggerStyle()}>
+                    <Link href="/pl" className={navigationMenuTriggerStyle()}>
                       Our Server
                     </Link>
                   </NavigationMenuLink>

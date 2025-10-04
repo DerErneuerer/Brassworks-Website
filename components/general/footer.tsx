@@ -20,7 +20,7 @@ export function Footer() {
                 <Icons.discord className="h-5 w-5" />
                 <span className="sr-only">Discord</span>
               </Link>
-              <Link href="" className="text-muted-foreground hover:text-foreground transition">
+              <Link href="https://ko-fi.com/brassworks" className="text-muted-foreground hover:text-foreground transition">
                 <Coffee className="h-5 w-5" />
                 <span className="sr-only">Kofi</span>
               </Link>
@@ -34,21 +34,21 @@ export function Footer() {
           <div>
             <h3 className="font-medium mb-4">Seasons</h3>
             <ul className="space-y-2">
-              <li><Link href="/games/minecraft" className="text-muted-foreground hover:text-foreground transition">Season 1</Link></li>
+              <li><Link href="/seasons#1" className="text-muted-foreground hover:text-foreground transition">Season 1</Link></li>
             </ul>
           </div>
           
           <div>
             <h3 className="font-medium mb-4">Modpack</h3>
             <ul className="space-y-2">
-              <li><Link href="/about" className="text-muted-foreground hover:text-foreground transition">Download</Link></li>
+              <li><Link href="/modpack" className="text-muted-foreground hover:text-foreground transition">Download</Link></li>
             </ul>
           </div>
           
           <div>
             <h3 className="font-medium mb-4">Server</h3>
             <ul className="space-y-2">
-              <li><Link href="/contact" className="text-muted-foreground hover:text-foreground transition">Join our Server</Link></li>
+              <li><Link href="/play-now" className="text-muted-foreground hover:text-foreground transition">Join our Server</Link></li>
             </ul>
           </div>
         </div>
@@ -57,15 +57,6 @@ export function Footer() {
           <p className="text-sm text-muted-foreground">
             © 2025 Brassworks. All rights reserved.
           </p>
-          <div className="flex">
-            <Link href="/legal-notice" className="text-sm text-muted-foreground hover:text-foreground transition">
-              Legal Notice
-            </Link>
-            <span className="px-2 text-sm text-muted-foreground">•</span>
-            <Link href="/privacy-policy" className="text-sm text-muted-foreground hover:text-foreground transition">
-              Privacy Policy
-            </Link>
-          </div>
         </div>
       </div>
     </footer>

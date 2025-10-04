@@ -13,7 +13,7 @@ export function HeroSection() {
 
   return (
     <section className="relative min-h-[100vh] flex flex-col justify-center overflow-hidden">
-      <div className="absolute inset-0 bg-[url('/images/banner.png')] z-0">
+      <div className="absolute inset-0 bg-cover bg-[url('/images/banner.png')] z-0">
         <div className="absolute inset-0 mix-blend-overlay opacity-10 bg-cover bg-center scale-130 transform" />
         <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
       </div>

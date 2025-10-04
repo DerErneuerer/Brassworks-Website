@@ -21,7 +21,7 @@ export default function NotFound() {
       <div className="container relative z-10 text-center max-w-2xl px-4">
         <div className={`space-y-6 ${loaded ? "animate-fadeIn" : "opacity-0"}`}>
           <h1 className="text-5xl font-extrabold tracking-tight leading-tight text-neutral-400">
-            404 : Page not found
+            404 - Page not found
           </h1>
           <p className="text-lg text-muted-foreground">
             The page you're looking for doesn't exist. Maybe you took a wrong turn?
