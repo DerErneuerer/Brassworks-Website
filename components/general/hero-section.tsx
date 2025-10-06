@@ -20,7 +20,7 @@ export function HeroSection() {
 
       <div className="container mx-auto mt-16 flex flex-col items-center gap-20 z-10">
         <img
-          src="/seasons/season.png"
+          src="/seasons/season2.png"
           className={`w-auto h-40 object-contain transition-opacity duration-1000 ease-out ${
             loaded ? 'opacity-100' : 'opacity-0'
           }`}
