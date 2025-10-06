@@ -19,7 +19,7 @@ export function SeasonsSection() {
             modpackOptions: [
                 { name: "Modrinth", url: "https://modrinth.com/modpack/brassworks-smp-modpack/version/1.2.9" },
             ],
-            mapUrl: "https://example.com/season1-map.zip",
+            mapUrl: "https://drive.proton.me/urls/MRCADETEG4#Z0Y7ezOqYnDi",
         },
         {
             title: "Season 2",
