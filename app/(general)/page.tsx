@@ -19,7 +19,6 @@ export const metadata = {
                 url: "https://brassworks.572.at/images/logo.png",
                 width: 540,
                 height: 540,
-                alt: "Brassworks Cover",
             },
         ],
     },
