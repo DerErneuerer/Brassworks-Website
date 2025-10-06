@@ -17,8 +17,8 @@ export const metadata = {
         images: [
             {
                 url: "https://brassworks.572.at/images/logo.png",
-                width: 1200,
-                height: 630,
+                width: 300,
+                height: 300,
                 alt: "Brassworks Cover",
             },
         ],
