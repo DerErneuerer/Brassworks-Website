@@ -7,8 +7,6 @@ import { ModpackSection } from "@/components/general/modpack";
 import { GallerySlider } from "@/components/general/gallery";
 
 export const metadata = {
-    title: "Brassworks – Create SMP",
-    description: "Our public server thrives on cooperation between players - express your creativity freely, with each other.",
     other: {
         'og:title': "Brassworks – Create SMP",
         'og:description': "Our public server thrives on cooperation between players - express your creativity freely, with each other.",
