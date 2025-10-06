@@ -27,31 +27,31 @@ export function Header() {
           <div className="hidden md:flex">
             <NavigationMenu>
               <NavigationMenuList className="gap-5">
+                  <NavigationMenuItem>
+                    <NavigationMenuLink asChild>
+                        <Link href="/#our-server" className={navigationMenuTriggerStyle()}>
+                            Our Server
+                        </Link>
+                    </NavigationMenuLink>
+                </NavigationMenuItem>
+                  <NavigationMenuItem>
+                      <NavigationMenuLink asChild>
+                          <Link href="/#modpack" className={navigationMenuTriggerStyle()}>
+                              Modpack
+                          </Link>
+                      </NavigationMenuLink>
+                  </NavigationMenuItem>
                 <NavigationMenuItem>
                   <NavigationMenuLink asChild>
-                    <Link href="/seasons" className={navigationMenuTriggerStyle()}>
+                    <Link href="/#seasons" className={navigationMenuTriggerStyle()}>
                       Seasons
                     </Link>
                   </NavigationMenuLink>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                   <NavigationMenuLink asChild>
-                    <Link href="/modpack" className={navigationMenuTriggerStyle()}>
-                      Modpack
-                    </Link>
-                  </NavigationMenuLink>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <NavigationMenuLink asChild>
-                    <Link href="/gallery" className={navigationMenuTriggerStyle()}>
+                    <Link href="/#gallery" className={navigationMenuTriggerStyle()}>
                       Gallery
-                    </Link>
-                  </NavigationMenuLink>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <NavigationMenuLink asChild>
-                    <Link href="/#our-server" className={navigationMenuTriggerStyle()}>
-                      Our Server
                     </Link>
                   </NavigationMenuLink>
                 </NavigationMenuItem>

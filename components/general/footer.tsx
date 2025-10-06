@@ -34,15 +34,15 @@ export function Footer() {
           <div>
             <h3 className="font-medium mb-4">Seasons</h3>
             <ul className="space-y-2">
-              <li><Link href="/seasons" className="text-muted-foreground hover:text-foreground transition">Season 1</Link></li>
-              <li><Link href="/seasons" className="text-muted-foreground hover:text-foreground transition">Season 2</Link></li>
+              <li><Link href="/#seasons" className="text-muted-foreground hover:text-foreground transition">Season 1</Link></li>
+              <li><Link href="/#seasons" className="text-muted-foreground hover:text-foreground transition">Season 2</Link></li>
             </ul>
           </div>
           
           <div>
             <h3 className="font-medium mb-4">Modpack</h3>
             <ul className="space-y-2">
-              <li><Link href="/modpack" className="text-muted-foreground hover:text-foreground transition">Download</Link></li>
+              <li><Link href="/#modpack" className="text-muted-foreground hover:text-foreground transition">Download</Link></li>
             </ul>
           </div>
           

@@ -5,7 +5,7 @@ import { Coffee, Map } from "lucide-react";
 
 export function CommunitySection() {
     return (
-        <section className="py-20">
+        <section className="pb-4 pt-36">
             <div className="container">
                 <div className="max-w-4xl mx-auto text-center mb-16">
                     <h2 className="text-3xl md:text-4xl mb-4 uppercase font-bold font-minecraft">
@@ -71,7 +71,7 @@ export function CommunitySection() {
                             ) => (
                                 <div
                                     key={i}
-                                    className={`
+                                    className={` border border-neutral-700
                     relative rounded-xl bg-white px-6 py-6 flex flex-col
                     shadow-[0px_0px_0px_1px_rgba(9,9,11,0.07),0px_2px_2px_0px_rgba(9,9,11,0.05)]
                     dark:bg-zinc-900 dark:shadow-[0px_0px_0px_1px_rgba(255,255,255,0.1)]
@@ -95,7 +95,6 @@ export function CommunitySection() {
                                         </dd>
                                     </div>
 
-                                    {/* ✅ Clean, small Button */}
                                     <div className="mt-auto flex justify-end">
                                         <Link href={href} target="_blank">
                                             <button
@@ -117,7 +116,7 @@ export function CommunitySection() {
                         )}
                     </div>
 
-                    <div className="w-full h-[500px] rounded-xl overflow-hidden shadow-lg border">
+                    <div className="w-full h-[500px] rounded-xl overflow-hidden shadow-lg border border-neutral-700">
                         <iframe
                             src="https://discord.com/widget?id=1346614274415398975&theme=dark"
                             width="100%"
