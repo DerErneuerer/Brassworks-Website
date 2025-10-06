@@ -17,17 +17,11 @@ export const metadata = {
         images: [
             {
                 url: "https://brassworks.572.at/images/logo.png",
-                width: 300,
-                height: 300,
+                width: 540,
+                height: 540,
                 alt: "Brassworks Cover",
             },
         ],
-    },
-    twitter: {
-        card: "summary_large_image",
-        title: "Brassworks – Create SMP",
-        description: "Our public server thrives on cooperation between players - express your creativity freely, with each other.",
-        images: ["https://brassworks.572.at/images/logo.png"],
     },
 };
 
