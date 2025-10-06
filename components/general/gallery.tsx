@@ -101,9 +101,10 @@ export function GallerySlider({
 
     return (
         <section
-            className={`relative w-full pt-6 pb-6 ${className}`}
+            className={`relative w-full pt-6 pb-6 scroll-mt-32 ${className}`}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
+            id='gallery'
         >
             <style jsx global>{`
         .no-scrollbar {

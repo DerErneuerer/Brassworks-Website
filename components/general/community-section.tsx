@@ -5,7 +5,7 @@ import { Coffee, Map } from "lucide-react";
 
 export function CommunitySection() {
     return (
-        <section className="pb-4 pt-36">
+        <section className="pb-20 pt-36">
             <div className="container">
                 <div className="max-w-4xl mx-auto text-center mb-16">
                     <h2 className="text-3xl md:text-4xl mb-4 uppercase font-bold font-minecraft">
