@@ -1,12 +1,12 @@
 // services/teamService.ts
 
-import { Scale, Crown, LucideIcon } from "lucide-react";
+import { Scale, Crown, Sparkle, LucideIcon } from "lucide-react";
 
 // ----------------------------------------
 // 🔹 Types
 // ----------------------------------------
 
-export type Role = "administrator" | "moderator";
+export type Role = "owner" | "administrator" | "moderator";
 
 export interface TeamMember {
   name: string;
@@ -20,7 +20,8 @@ export interface TeamMember {
 // ----------------------------------------
 
 export const roleIcons: Record<Role, LucideIcon> = {
-  administrator: Crown,
+  owner: Crown,
+  administrator: Sparkle,
   moderator: Scale,
 };
 
@@ -31,25 +32,25 @@ export const roleIcons: Record<Role, LucideIcon> = {
 let teamMembers: TeamMember[] = [
   {
     name: "swzo",
-    role: "administrator",
+    role: "owner",
     tag: "@iimillie",
     avatarUrl: "/avatars/swzo.png",
   },
     {
     name: "Pipo",
-    role: "administrator",
+    role: "owner",
     tag: "@pipo1660",
     avatarUrl: "/avatars/pipo.png",
   },
     {
     name: "DerErneuerer",
-    role: "moderator",
+    role: "administrator",
     tag: "@dererneuerer",
     avatarUrl: "/avatars/dererneuerer.png",
   },
     {
         name: "Float420",
-        role: "moderator",
+        role: "administrator",
         tag: "@float420",
         avatarUrl: "/avatars/float420.png",
     }

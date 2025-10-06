@@ -15,7 +15,7 @@ export default function Home() {
       <SeasonsSection/>
         <GallerySlider
             items={[
-                { src: "/images/gallery/banner.png", author: "Coming Soon" },
+                { src: "/images/gallery/1.png", author: "Coming Soon" },
             ]}
             autoPlay
             interval={5000}

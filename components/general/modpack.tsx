@@ -16,10 +16,10 @@ export function ModpackSection() {
             "Brassworks Season Two lifts off with live map, brand-new mods, and a fresh world to explore. Bigger, brighter, bolder.",
         imageUrl: "/images/banner.png",
         modpackOptions: [
-            { name: "Prism Launcher", url: "https://prismlauncher.org" },
+            { name: "Prism Launcher", url: "https://github.com/serverside-swzo/Brassworks-S2-Autoupdating/raw/refs/heads/master/Brassworks-S2-Autoupdating.zip" },
             {
                 name: "Modrinth",
-                url: "https://modrinth.com/modpack/your-modpack-season2",
+                url: "https://modrinth.com/modpack/brassworks-smp-modpack/version/2.0.0",
             },
         ],
     };
@@ -39,7 +39,7 @@ export function ModpackSection() {
             <div className="container max-w-7xl mx-auto text-center">
                 <div className="max-w-4xl mx-auto mb-16">
                     <h1 className="font-minecraft uppercase text-3xl md:text-4xl font-bold mb-2">
-                        Our Modpack - Season 2
+                        Modpack - Season 2
                     </h1>
                     <p className="text-zinc-400 mb-6 max-w-xl mx-auto">
                         Brassworks Season Two lifts off with live map, brand-new mods, and a fresh world to explore. Bigger, brighter, bolder.
@@ -66,7 +66,7 @@ export function ModpackSection() {
                                 <strong className="text-zinc-100">Using Prism Launcher</strong>:<br />
                                 Download Prism Launcher from{" "}
                                 <Link
-                                    href="https://prismlauncher.org"
+                                    href="https://github.com/serverside-swzo/Brassworks-S2-Autoupdating/raw/refs/heads/master/Brassworks-S2-Autoupdating.zip"
                                     target="_blank"
                                     className="text-amber-400 underline hover:text-amber-300"
                                     rel="noopener noreferrer"
@@ -79,7 +79,7 @@ export function ModpackSection() {
                                 <strong className="text-zinc-100">Using Modrinth</strong>:<br />
                                 Visit the{" "}
                                 <Link
-                                    href="https://modrinth.com/modpack/your-modpack-season2"
+                                    href="https://modrinth.com/modpack/brassworks-smp-modpack/version/2.0.0"
                                     target="_blank"
                                     className="text-amber-400 underline hover:text-amber-300"
                                     rel="noopener noreferrer"

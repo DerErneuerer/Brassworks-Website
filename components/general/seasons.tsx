@@ -17,8 +17,7 @@ export function SeasonsSection() {
                 "Our very first season! Featuring classic Create contraptions, community builds, and the foundation of what Brassworks is today.",
             imageUrl: "/seasons/season1.png",
             modpackOptions: [
-                { name: "Prism Launcher", url: "https://prismlauncher.org" },
-                { name: "Modrinth", url: "https://modrinth.com/modpack/your-modpack" },
+                { name: "Modrinth", url: "https://modrinth.com/modpack/brassworks-smp-modpack/version/1.2.9" },
             ],
             mapUrl: "https://example.com/season1-map.zip",
         },
@@ -29,10 +28,10 @@ export function SeasonsSection() {
                 "Season Two lifts off with live map, brand-new mods, and a fresh world to explore. Bigger, brighter, bolder.",
             imageUrl: "/seasons/season2.png",
             modpackOptions: [
-                { name: "Prism Launcher", url: "https://prismlauncher.org" },
+                { name: "Prism Launcher", url: "https://github.com/serverside-swzo/Brassworks-S2-Autoupdating/raw/refs/heads/master/Brassworks-S2-Autoupdating.zip" },
                 {
                     name: "Modrinth",
-                    url: "https://modrinth.com/modpack/your-modpack-season2",
+                    url: "https://modrinth.com/modpack/brassworks-smp-modpack/version/2.0.0",
                 },
             ],
             mapUrl: null,
