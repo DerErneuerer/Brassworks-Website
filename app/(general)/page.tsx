@@ -9,12 +9,12 @@ import { GallerySlider } from "@/components/general/gallery";
 export const metadata = {
     title: "Brassworks – Create SMP",
     description: "Our public server thrives on cooperation between players - express your creativity freely, with each other.",
-    openGraph: {
-        title: "Brassworks – Create SMP",
-        description: "Our public server thrives on cooperation between players - express your creativity freely, with each other.",
-        url: "https://brassworks.572.at/",
-        type: "website",
-        images: [
+    other: {
+        'og:title': "Brassworks – Create SMP",
+        'og:description': "Our public server thrives on cooperation between players - express your creativity freely, with each other.",
+        'og:url': "https://brassworks.572.at/",
+        'og:type': "website",
+        'og:images': [
             {
                 url: "https://brassworks.572.at/images/logo.png",
                 width: 540,
