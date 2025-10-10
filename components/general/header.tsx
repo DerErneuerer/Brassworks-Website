@@ -36,23 +36,23 @@ export function Header() {
                 </NavigationMenuItem>
                   <NavigationMenuItem>
                       <NavigationMenuLink asChild>
-                          <Link href="/#modpack" className={navigationMenuTriggerStyle()}>
-                              Modpack
+                          <Link href="/#gallery" className={navigationMenuTriggerStyle()}>
+                              Gallery
                           </Link>
                       </NavigationMenuLink>
                   </NavigationMenuItem>
                 <NavigationMenuItem>
                   <NavigationMenuLink asChild>
-                    <Link href="/#seasons" className={navigationMenuTriggerStyle()}>
-                      Seasons
+                    <Link target="_blank" href="https://brassmap.572.at/" className={navigationMenuTriggerStyle()}>
+                      Live Map
                     </Link>
                   </NavigationMenuLink>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                   <NavigationMenuLink asChild>
-                    <Link href="/#gallery" className={navigationMenuTriggerStyle()}>
-                      Gallery
-                    </Link>
+                      <Link target="_blank" href="https://ko-fi.com/brassworks" className={navigationMenuTriggerStyle()}>
+                          Support Us
+                      </Link>
                   </NavigationMenuLink>
                 </NavigationMenuItem>
               </NavigationMenuList>
@@ -85,17 +85,17 @@ export function Header() {
               </SheetTrigger>
               <SheetContent side="right" className="w-[80%] sm:w-[385px]">
                 <nav className="flex flex-col gap-4 mt-8">
-                  <Link href="/" className="px-2 py-1 rounded-md hover:bg-muted">
-                    Seasons
+                  <Link href="/#our-server" className="px-2 py-1 rounded-md hover:bg-muted">
+                    Our Server
                   </Link>
-                  <Link href="/news" className="px-2 py-1 rounded-md hover:bg-muted">
-                    Modpack
-                  </Link>
-                  <Link href="/support" className="px-2 py-1 rounded-md hover:bg-muted">
+                  <Link href="/#gallery" className="px-2 py-1 rounded-md hover:bg-muted">
                     Gallery
                   </Link>
-                  <Link href="/features" className="px-2 py-1 rounded-md hover:bg-muted">
-                    Our Server
+                  <Link target="_blank" href="https://brassworks.572.at/" className="px-2 py-1 rounded-md hover:bg-muted">
+                    Live Map
+                  </Link>
+                  <Link target="_blank" href="https://ko-fi.com/brassworks" className="px-2 py-1 rounded-md hover:bg-muted">
+                      Support Us
                   </Link>
                   <div className="flex flex-col gap-2 mt-4">
                     <Link href="/play-now">

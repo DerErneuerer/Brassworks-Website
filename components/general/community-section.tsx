@@ -1,9 +1,37 @@
 "use client";
 
 import Link from "next/link";
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import { Coffee, Map } from "lucide-react";
 
 export function CommunitySection() {
+    const [status, setStatus] = useState({
+        online: false,
+        players: { online: 0, max: 0 },
+    });
+
+    useEffect(() => {
+        async function fetchStatus() {
+            try {
+                const res = await fetch("https://api.mcstatus.io/v2/status/java/brassworks.572.at");
+                const data = await res.json();
+
+                setStatus({
+                    online: data.online,
+                    players: data.players || { online: 0, max: 0 },
+                });
+            } catch (err) {
+                console.error("Fehler beim Laden des Serverstatus:", err);
+                setStatus({ online: false, players: { online: 0, max: 0 } });
+            }
+        }
+
+        fetchStatus();
+        const interval = setInterval(fetchStatus, 30000);
+        return () => clearInterval(interval);
+    }, []);
+
     return (
         <section className="pb-20 pt-36">
             <div className="container">
@@ -114,6 +142,36 @@ export function CommunitySection() {
                                 </div>
                             )
                         )}
+                        <div
+                            className={` border border-neutral-700 flex-1
+                    relative rounded-xl bg-white px-6 py-6
+                    shadow-[0px_0px_0px_1px_rgba(9,9,11,0.07),0px_2px_2px_0px_rgba(9,9,11,0.05)]
+                    dark:bg-zinc-900 dark:shadow-[0px_0px_0px_1px_rgba(255,255,255,0.1)]
+                    dark:before:pointer-events-none dark:before:absolute dark:before:-inset-px dark:before:rounded-xl 
+                    dark:before:shadow-[0px_2px_8px_0px_rgba(0,0,0,0.20),0px_1px_0px_0px_rgba(255,255,255,0.06)_inset]
+                  `}
+                        >
+                            <div className="relative w-full h-full overflow-hidden rounded-xl">
+                                <motion.img
+                                    src="images/logo.png"
+                                    className="absolute inset-0 h-full object-cover"
+                                    alt="Brassworks Logo"
+                                />
+                                <div className="h-full w-full pl-20 ml-2">
+                                    <div className="h-6 w-full">
+                                        <span className="text-base font-medium">
+                                            Server Status
+                                        </span>
+                                        <span className={`ml-1.5 px-1.5 py-0.5 rounded-xl ${status.online ? "bg-emerald-500" : "bg-rose-600"}  text-xs`}>{status.online ? "online" : "offline"}</span>
+                                    </div>
+                                    <div className="bg-gray-500 rounded-l-lg w-4 h-0.5 mt-2.5 mb-2">
+                                    </div>
+                                    <dt className="text-sm text-gray-300">
+                                        {status.players.online}/{status.players.max} players
+                                    </dt>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div className="w-full h-[500px] rounded-xl overflow-hidden shadow-lg border border-neutral-700">
