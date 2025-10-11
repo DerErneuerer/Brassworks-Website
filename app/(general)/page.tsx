@@ -26,6 +26,7 @@ export default function Home() {
         <GallerySlider
             items={[
                 { src: "/images/gallery/1.png?v=1", author: "Welcome to Season 2!" },
+                { src: "/images/gallery/2.png?v=1", author: "Nether Tomfoolery..." },
             ]}
             autoPlay
             interval={5000}
