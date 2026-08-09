@@ -1,14 +1,23 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from "@tanstack/react-router";
+import { Button, Page, PageBody, PageHeader, Section } from "brassui-react";
 
-export const Route = createFileRoute('/')({ component: IndexRoute })
+export const Route = createFileRoute("/")({ component: IndexRoute });
 
 function IndexRoute() {
     return (
-        <div className="p-8">
-            <h1 className="text-4xl font-bold">Welcome to TanStack Start</h1>
-            <p className="mt-4 text-lg">
-                Edit <code>src/routes/index.tsx</code> to get started.
-            </p>
-        </div>
-    )
+        <Page>
+            <PageHeader title="Hello world" />
+            <PageBody>
+                <Section title="">
+                    <p>
+                        This is a starter project for building a React
+                        application with BrassUI
+                    </p>
+                    <p>
+                        <Button>Example Button</Button>
+                    </p>
+                </Section>
+            </PageBody>
+        </Page>
+    );
 }
