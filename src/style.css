@@ -1,0 +1,160 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "minecraft";
+  src: url("/fonts/MinecraftRegular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "minecraft";
+  src: url("/fonts/MinecraftBold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "minecraft";
+  src: url("/fonts/MinecraftItalic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+.outer {
+  --outer-radius: 40px;
+
+  --pillar-x: 220px;
+  --pillar-y: 40px;
+
+  --big-circle-radius: 35px;
+  --circle-radius: 35px;
+  --circle-diameter: calc(var(--circle-radius) * 2);
+
+  --spacing-x: calc(
+          var(--big-circle-radius) + var(--pillar-x)
+  );
+  --spacing-y: calc(
+          var(--big-circle-radius) + var(--pillar-y)
+  );
+
+  --extension-x: calc(
+          var(--circle-radius) + var(--spacing-x)
+  );
+  --extension-y: calc(
+          var(--circle-radius) + var(--spacing-y)
+  );
+
+  --cutout-mask:
+          radial-gradient(
+                  circle at 100% 100%,
+                  transparent var(--big-circle-radius),
+                  #000 calc(var(--big-circle-radius) + 1px)
+          )
+          0 0 /
+      calc(100% - var(--pillar-x))
+          calc(100% - var(--pillar-y))
+          no-repeat,
+          radial-gradient(
+                  circle closest-side,
+                  #000 100%,
+                  transparent calc(100% + 1px)
+          )
+          calc(100% - var(--spacing-x)) 100% /
+      var(--circle-diameter)
+          var(--circle-diameter)
+          no-repeat,
+          radial-gradient(
+                  circle closest-side,
+                  #000 100%,
+                  transparent calc(100% + 1px)
+          )
+          100% calc(100% - var(--spacing-y)) /
+      var(--circle-diameter)
+          var(--circle-diameter)
+          no-repeat,
+          linear-gradient(#000 0 0)
+          0 0 /
+      calc(100% - var(--spacing-x))
+          calc(100% - var(--circle-radius))
+          no-repeat,
+          linear-gradient(#000 0 0)
+          0 100% /
+      calc(100% - var(--extension-x))
+          var(--circle-diameter)
+          no-repeat,
+          linear-gradient(#000 0 0)
+          100% 0 /
+      var(--circle-diameter)
+          calc(100% - var(--extension-y))
+          no-repeat,
+          linear-gradient(#000 0 0)
+          0 0 /
+      calc(100% - var(--circle-radius))
+          calc(100% - var(--spacing-y))
+          no-repeat;
+
+  overflow: hidden;
+  border-radius:
+          var(--outer-radius)
+          var(--outer-radius)
+          0
+          var(--outer-radius);
+  -webkit-mask: var(--cutout-mask);
+  mask: var(--cutout-mask);
+}
+
+.see-more-wipe {
+    transform: translateX(0);
+    transition: transform 1000ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.see-more-button:hover .see-more-wipe {
+    transform: translateX(900px);
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    min-width: 320px;
+    min-height: 100%;
+    scroll-behavior: smooth;
+    background: #0d0c0b;
+  }
+
+  body {
+    min-width: 320px;
+    min-height: 100%;
+    margin: 0;
+    overflow-x: hidden;
+    background: #0d0c0b;
+    color: white;
+  }
+
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  :focus-visible {
+    outline: 2px solid #d9b86e;
+    outline-offset: 3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
