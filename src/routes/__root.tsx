@@ -6,7 +6,7 @@ import {
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import { TanStackDevtools } from "@tanstack/react-devtools";
 import { TooltipLayer, ToastHost } from "brassui-react";
-import TanStackQueryDevtools from "../lib/queries/devtools";
+import TanStackQueryDevtools from "../lib/queries/devtools.js";
 
 import appCss from "../styles.css?url";
 
