@@ -31,6 +31,19 @@ const TEAM_MASK_STYLE = {
 
 const TEAM_MEMBERS: TeamMember[] = [
     {
+        id: "pipo1660",
+        name: "Pipo1660",
+        role: "Owner",
+        entrySide: "left",
+        description:
+            "Soo, me be Pipo. I usually stay behind the scenes, turning loose ideas into models, animations, characters, and the pieces of lore that make our worlds feel alive. I enjoy thinking through how everything should look, move, and fit together - often catching the oddly specific details that would otherwise get overlooked.",
+        background: assetUrl("/images/team/pipo1660/background.png"),
+        head: assetUrl("/images/team/pipo1660/head.png"),
+        skin: assetUrl("/images/team/pipo1660/skin.png"),
+        accent: "#d85151",
+        accentText: "#fff7f7",
+    },
+    {
         id: "swzo",
         name: "swzo",
         role: "Owner",
