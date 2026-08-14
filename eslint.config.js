@@ -15,7 +15,7 @@ export default [
         },
     },
     {
-        ignores: ["eslint.config.js", "prettier.config.js"],
+        ignores: [".output/**", "eslint.config.js", "prettier.config.js"],
     },
     {
         files: ["src/**/*.ts", "src/**/*.tsx"],

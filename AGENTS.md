@@ -99,5 +99,3 @@ tanstackIntent:
   for: "Programmatic route tree building as an alternative to filesystem conventions: rootRoute, index, route, layout, physical, defineVirtualSubtreeConfig. Use with TanStack Router plugin's virtualRouteConfig option."
 
 <!-- intent-skills:end -->
-
-Consult `node_modules/brassui-react/docs/agents.md` for information on using `brassui-react`.

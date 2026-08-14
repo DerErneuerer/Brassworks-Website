@@ -1,23 +1,24 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Button, Page, PageBody, PageHeader, Section } from "brassui-react";
+import { Header } from "../components/general/Header.tsx";
+import { HeroSection } from "../components/general/HeroSection.tsx";
+import { CreationsSection } from "../components/general/CreationsSection.tsx";
+import { ModsSection } from "../components/general/ModsSection.tsx";
+import { TeamSection } from "../components/general/TeamSection.tsx";
+import { MediaSection } from "../components/general/MediaSection.tsx";
 
 export const Route = createFileRoute("/")({ component: IndexRoute });
 
 function IndexRoute() {
     return (
-        <Page>
-            <PageHeader title="Hello world" />
-            <PageBody>
-                <Section title="">
-                    <p>
-                        This is a starter project for building a React
-                        application with BrassUI
-                    </p>
-                    <p>
-                        <Button>Example Button</Button>
-                    </p>
-                </Section>
-            </PageBody>
-        </Page>
+        <>
+            <Header />
+            <main>
+                <HeroSection />
+                <CreationsSection />
+                <ModsSection />
+                <TeamSection />
+                <MediaSection />
+            </main>
+        </>
     );
 }

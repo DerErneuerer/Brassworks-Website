@@ -1,7 +1,74 @@
 @import "tailwindcss";
-@import "brassui-react/styles.css";
 
 @import "styles/theme.css";
+
+.outer {
+    --outer-radius: clamp(24px, 2.5vw, 40px);
+    --pillar-x: clamp(160px, 14vw, 220px);
+    --pillar-y: clamp(30px, 3vw, 40px);
+    --big-circle-radius: clamp(26px, 2.5vw, 35px);
+    --circle-radius: clamp(26px, 2.5vw, 35px);
+    --circle-diameter: calc(var(--circle-radius) * 2);
+    --spacing-x: calc(var(--big-circle-radius) + var(--pillar-x));
+    --spacing-y: calc(var(--big-circle-radius) + var(--pillar-y));
+    --extension-x: calc(var(--circle-radius) + var(--spacing-x));
+    --extension-y: calc(var(--circle-radius) + var(--spacing-y));
+    --cutout-mask:
+        radial-gradient(
+            circle at 100% 100%,
+            transparent var(--big-circle-radius),
+            #000 calc(var(--big-circle-radius) + 1px)
+        )
+        0 0 / calc(100% - var(--pillar-x)) calc(100% - var(--pillar-y))
+        no-repeat,
+        radial-gradient(
+            circle closest-side,
+            #000 100%,
+            transparent calc(100% + 1px)
+        )
+        calc(100% - var(--spacing-x)) 100% / var(--circle-diameter)
+        var(--circle-diameter) no-repeat,
+        radial-gradient(
+            circle closest-side,
+            #000 100%,
+            transparent calc(100% + 1px)
+        )
+        100% calc(100% - var(--spacing-y)) / var(--circle-diameter)
+        var(--circle-diameter) no-repeat,
+        linear-gradient(#000 0 0) 0 0 / calc(100% - var(--spacing-x))
+        calc(100% - var(--circle-radius)) no-repeat,
+        linear-gradient(#000 0 0) 0 100% / calc(100% - var(--extension-x))
+        var(--circle-diameter) no-repeat,
+        linear-gradient(#000 0 0) 100% 0 / var(--circle-diameter)
+        calc(100% - var(--extension-y)) no-repeat,
+        linear-gradient(#000 0 0) 0 0 / calc(100% - var(--circle-radius))
+        calc(100% - var(--spacing-y)) no-repeat;
+
+    overflow: hidden;
+    border-radius: var(--outer-radius) var(--outer-radius) 0 var(--outer-radius);
+    -webkit-mask: var(--cutout-mask);
+    mask: var(--cutout-mask);
+}
+
+.see-more-wipe {
+    transform: translateX(0);
+    transition: transform 1000ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.see-more-button:hover .see-more-wipe,
+.see-more-button:focus-visible .see-more-wipe {
+    transform: translateX(100%);
+}
+
+@media (max-width: 720px) {
+    .outer {
+        --outer-radius: 18px;
+
+        border-radius: var(--outer-radius);
+        -webkit-mask: none;
+        mask: none;
+    }
+}
 
 @layer base {
     * {
@@ -9,23 +76,64 @@
     }
 
     html,
-    body,
-    #app {
+    body {
+        min-width: 320px;
         min-height: 100%;
     }
 
+    html {
+        scroll-behavior: smooth;
+        background: #0d0c0b;
+    }
+
     body {
-        @apply bg-zinc-800;
         margin: 0;
+        overflow-x: hidden;
+        background: #0d0c0b;
+        color: white;
     }
 
     button,
     a {
         -webkit-tap-highlight-color: transparent;
     }
+
+    :focus-visible {
+        outline: 2px solid #d9b86e;
+        outline-offset: 3px;
+    }
+}
+
+@keyframes team-background-in {
+    from { opacity: 0; transform: scale(1.015); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes team-background-out {
+    from { opacity: 1; transform: scale(1); }
+    to { opacity: 0; transform: scale(1.008); }
+}
+
+@keyframes team-skin-in {
+    from { opacity: 0; transform: translateX(var(--team-skin-entry-x)); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes team-skin-out {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@keyframes team-content-in {
+    from { opacity: 0.72; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 @layer utilities {
+    .font-minecraft {
+        font-family: var(--font-mc);
+    }
+
     @media (prefers-reduced-motion: reduce) {
         *,
         *::before,

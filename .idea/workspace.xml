@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a1015a9d-74c6-4064-be06-2c42ed40ff2f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/modpacks/create-brassworks-cover.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/modpacks/create-brassworks-logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/modpacks/upcoming-modpack-cover.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/our-mods-cover.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/team/dererneuerer/background.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/team/dererneuerer/head.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/team/dererneuerer/skin.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/team/horrorboi666/background.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/team/horrorboi666/head.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/team/horrorboi666/skin.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/team/swzo/background.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/team/swzo/head.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/team/swzo/skin.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/general/CreationsSection.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/general/Header.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/general/HeroSection.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/general/MediaSection.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/general/ModsSection.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/general/TeamSection.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AGENTS.md" beforeDir="false" afterPath="$PROJECT_DIR$/AGENTS.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eslint.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/eslint.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/general/Header.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/general/HeroSection.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/assets.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/assets.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/hero.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/hooks/interaction.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/__root.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/__root.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles.css" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="EmbeddingIndexingInfo">
+    <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;DerErneuerer&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/DerErneuerer/website-new.git&quot;,
+    &quot;accountId&quot;: &quot;d699731c-9e54-4c12-a818-6c872bfabace&quot;
+  }
+}</component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="3Hs6gX7ff1YPHK46EoRuJFErYyE" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "feat/tanstack",
+    "javascript.preferred.runtime.type.id": "node",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "C:/Users/neodi/WebstormProjects/brassworks-website/public/images/team/horrorboi666",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "to.speed.mode.migration.done": "true",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2025.3.3\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\neodi\WebstormProjects\brassworks-website\public\images\team\horrorboi666" />
+      <recent name="C:\Users\neodi\WebstormProjects\brassworks-website\public\images" />
+      <recent name="C:\Users\neodi\WebstormProjects\brassworks-website\public\images\modpacks" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\neodi\WebstormProjects\brassworks-website\public\images\team\horrorboi666" />
+      <recent name="C:\Users\neodi\WebstormProjects\brassworks-website\public\images\team\dererneuerer" />
+      <recent name="C:\Users\neodi\WebstormProjects\brassworks-website\public\images\team\swzo" />
+      <recent name="C:\Users\neodi\WebstormProjects\brassworks-website\src\components\general" />
+      <recent name="C:\Users\neodi\WebstormProjects\brassworks-website\public\images\modpacks" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-WS-253.31033.133" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a1015a9d-74c6-4064-be06-2c42ed40ff2f" name="Changes" comment="" />
+      <created>1786644543343</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1786644543343</updated>
+      <workItem from="1786644544561" duration="786000" />
+      <workItem from="1786646077886" duration="6980000" />
+      <workItem from="1786694255677" duration="20031000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

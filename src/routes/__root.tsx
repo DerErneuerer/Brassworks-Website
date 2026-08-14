@@ -5,7 +5,6 @@ import {
 } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import { TanStackDevtools } from "@tanstack/react-devtools";
-import { TooltipLayer, ToastHost } from "brassui-react";
 import TanStackQueryDevtools from "../lib/queries/devtools.js";
 
 import appCss from "../styles.css?url";
@@ -27,7 +26,11 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
                 content: "width=device-width, initial-scale=1",
             },
             {
-                title: "TanStack Start Starter",
+                title: "Brassworks",
+            },
+            {
+                name: "description",
+                content: "The official Create: Brassworks server website.",
             },
         ],
         links: [
@@ -46,10 +49,8 @@ function RootDocument({ children }: { children: React.ReactNode }) {
             <head>
                 <HeadContent />
             </head>
-            <body className="theme-light">
+            <body>
                 {children}
-                <TooltipLayer />
-                <ToastHost />
                 <TanStackDevtools
                     config={{
                         position: "bottom-right",
