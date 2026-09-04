@@ -10,7 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as CommunityRouteImport } from './routes/community'
+import { Route as FinancesRouteImport } from './routes/finances'
 import { Route as LauncherRouteImport } from './routes/launcher'
 import { Route as ModpacksRouteImport } from './routes/modpacks'
 import { Route as RoadmapRouteImport } from './routes/roadmap'
@@ -22,9 +22,9 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CommunityRoute = CommunityRouteImport.update({
-  id: '/community',
-  path: '/community',
+const FinancesRoute = FinancesRouteImport.update({
+  id: '/finances',
+  path: '/finances',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LauncherRoute = LauncherRouteImport.update({
@@ -55,7 +55,7 @@ const NewsSlugRoute = NewsSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/community': typeof CommunityRoute
+  '/finances': typeof FinancesRoute
   '/launcher': typeof LauncherRoute
   '/modpacks': typeof ModpacksRoute
   '/roadmap': typeof RoadmapRoute
@@ -64,7 +64,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/community': typeof CommunityRoute
+  '/finances': typeof FinancesRoute
   '/launcher': typeof LauncherRoute
   '/modpacks': typeof ModpacksRoute
   '/roadmap': typeof RoadmapRoute
@@ -74,7 +74,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/community': typeof CommunityRoute
+  '/finances': typeof FinancesRoute
   '/launcher': typeof LauncherRoute
   '/modpacks': typeof ModpacksRoute
   '/roadmap': typeof RoadmapRoute
@@ -85,7 +85,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/community'
+    | '/finances'
     | '/launcher'
     | '/modpacks'
     | '/roadmap'
@@ -94,7 +94,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/community'
+    | '/finances'
     | '/launcher'
     | '/modpacks'
     | '/roadmap'
@@ -103,7 +103,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
-    | '/community'
+    | '/finances'
     | '/launcher'
     | '/modpacks'
     | '/roadmap'
@@ -113,7 +113,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  CommunityRoute: typeof CommunityRoute
+  FinancesRoute: typeof FinancesRoute
   LauncherRoute: typeof LauncherRoute
   ModpacksRoute: typeof ModpacksRoute
   RoadmapRoute: typeof RoadmapRoute
@@ -130,11 +130,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/community': {
-      id: '/community'
-      path: '/community'
-      fullPath: '/community'
-      preLoaderRoute: typeof CommunityRouteImport
+    '/finances': {
+      id: '/finances'
+      path: '/finances'
+      fullPath: '/finances'
+      preLoaderRoute: typeof FinancesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/launcher': {
@@ -177,7 +177,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  CommunityRoute: CommunityRoute,
+  FinancesRoute: FinancesRoute,
   LauncherRoute: LauncherRoute,
   ModpacksRoute: ModpacksRoute,
   RoadmapRoute: RoadmapRoute,

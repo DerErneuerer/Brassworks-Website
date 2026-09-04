@@ -1,22 +1,34 @@
 import { Star } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import {
+  ArticleRatingApiError,
   getArticleRating,
-  saveArticleRating,
-  type ArticleRatingScore,
-} from "../../features/news/article-rating.service";
+  saveArticleRating
+} from "../../features/news/article-rating.service.ts";
+import type {ArticleRatingScore} from "../../features/news/article-rating.service.ts";
 
 const scores: ArticleRatingScore[] = [1, 2, 3, 4, 5];
 
-type SaveState = "idle" | "saved" | "error";
+type SaveState =
+  | "loading"
+  | "idle"
+  | "saving"
+  | "saved"
+  | "rate-limited"
+  | "error";
 
 export function ArticleRating({ articleId }: { articleId: string }) {
   const [score, setScore] = useState<ArticleRatingScore | null>(null);
   const [previewScore, setPreviewScore] =
     useState<ArticleRatingScore | null>(null);
-  const [saveState, setSaveState] = useState<SaveState>("idle");
+  const [saveState, setSaveState] = useState<SaveState>("loading");
   const saveSequence = useRef(0);
   const visibleScore = previewScore ?? score ?? 0;
+  const locked =
+    score !== null ||
+    saveState === "loading" ||
+    saveState === "saving" ||
+    saveState === "rate-limited";
 
   useEffect(() => {
     let active = true;
@@ -24,14 +36,14 @@ export function ArticleRating({ articleId }: { articleId: string }) {
     saveSequence.current += 1;
     setScore(null);
     setPreviewScore(null);
-    setSaveState("idle");
+    setSaveState("loading");
 
     void getArticleRating(articleId)
       .then((rating) => {
-        if (!active || !rating) return;
+        if (!active) return;
 
-        setScore(rating.score);
-        setSaveState("saved");
+        setScore(rating.userRating);
+        setSaveState(rating.userRating === null ? "idle" : "saved");
       })
       .catch(() => {
         if (active) setSaveState("error");
@@ -43,17 +55,43 @@ export function ArticleRating({ articleId }: { articleId: string }) {
   }, [articleId]);
 
   const selectScore = async (nextScore: ArticleRatingScore) => {
+    if (locked) return;
+
     const sequence = saveSequence.current + 1;
     saveSequence.current = sequence;
-    setScore(nextScore);
-    setSaveState("idle");
+    setPreviewScore(null);
+    setSaveState("saving");
 
     try {
-      await saveArticleRating({ articleId, score: nextScore });
+      const rating = await saveArticleRating({ articleId, score: nextScore });
 
-      if (saveSequence.current === sequence) setSaveState("saved");
-    } catch {
-      if (saveSequence.current === sequence) setSaveState("error");
+      if (saveSequence.current !== sequence) return;
+
+      setScore(rating.userRating);
+      setSaveState("saved");
+    } catch (error) {
+      if (saveSequence.current !== sequence) return;
+
+      if (error instanceof ArticleRatingApiError && error.status === 409) {
+        try {
+          const rating = await getArticleRating(articleId);
+
+          if (saveSequence.current !== sequence) return;
+
+          setScore(rating.userRating);
+          setSaveState(rating.userRating === null ? "error" : "saved");
+        } catch {
+          if (saveSequence.current === sequence) setSaveState("error");
+        }
+
+        return;
+      }
+
+      setSaveState(
+        error instanceof ArticleRatingApiError && error.status === 429
+          ? "rate-limited"
+          : "error",
+      );
     }
   };
 
@@ -72,7 +110,9 @@ export function ArticleRating({ articleId }: { articleId: string }) {
       <div
         role="group"
         aria-label="Rate this article from 1 to 5 stars"
-        onMouseLeave={() => setPreviewScore(null)}
+        onMouseLeave={() => {
+          if (!locked) setPreviewScore(null);
+        }}
         className="mt-5 inline-flex items-center justify-center gap-1 sm:gap-2"
       >
         {scores.map((ratingScore) => {
@@ -83,16 +123,27 @@ export function ArticleRating({ articleId }: { articleId: string }) {
             <button
               key={ratingScore}
               type="button"
+              disabled={locked}
               onClick={() => void selectScore(ratingScore)}
-              onMouseEnter={() => setPreviewScore(ratingScore)}
-              onFocus={() => setPreviewScore(ratingScore)}
-              onBlur={() => setPreviewScore(null)}
+              onMouseEnter={() => {
+                if (!locked) setPreviewScore(ratingScore);
+              }}
+              onFocus={() => {
+                if (!locked) setPreviewScore(ratingScore);
+              }}
+              onBlur={() => {
+                if (!locked) setPreviewScore(null);
+              }}
               aria-label={`${ratingScore} out of 5 stars`}
               aria-pressed={score === ratingScore}
-              className={`site-interactive flex h-11 w-11 cursor-pointer items-center justify-center rounded-full transition-[color,transform] active:scale-95 sm:h-12 sm:w-12 ${
+              className={`site-interactive flex h-11 w-11 items-center justify-center rounded-full transition-[color,transform] sm:h-12 sm:w-12 ${
+                locked ? "cursor-default" : "cursor-pointer active:scale-95"
+              } ${
                 filled
                   ? "text-[#d9b86e]"
-                  : "text-white/18 hover:text-[#d9b86e]"
+                  : locked
+                    ? "text-white/18"
+                    : "text-white/18 hover:text-[#d9b86e]"
               } ${highlighted ? "scale-110" : "scale-100"}`}
             >
               <Star
@@ -108,9 +159,13 @@ export function ArticleRating({ articleId }: { articleId: string }) {
       <span className="sr-only" aria-live="polite">
         {saveState === "saved"
           ? `${score} out of 5 stars saved.`
-          : saveState === "error"
-            ? "The rating could not be saved in this browser."
-            : ""}
+          : saveState === "saving"
+            ? "Saving rating."
+            : saveState === "rate-limited"
+              ? "Too many rating attempts. Please try again shortly."
+              : saveState === "error"
+                ? "The rating could not be loaded or saved."
+                : ""}
       </span>
     </section>
   );

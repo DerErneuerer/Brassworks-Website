@@ -364,225 +364,263 @@ export function Header() {
   };
 
   return (
-    <>
-      <SiteAnnouncement/>
-      <header
-        ref={headerRef}
-        className="site-header fixed inset-x-0 top-0 z-50 h-[60px] bg-[#171614]/95 font-sans text-white backdrop-blur-md"
-      >
-      <div className="mx-auto flex h-full w-full max-w-[1600px] items-center px-4 sm:px-8 lg:px-[60px]">
-        <a
-          href="/"
-          className="flex shrink-0 items-center gap-3 outline-none"
-          aria-label="Brassworks home"
-        >
-          <img
-            src={assetUrl("/icon.png")}
-            alt=""
-            className="h-[35px] w-[35px] object-contain"
-          />
-          <span className="hidden flex-col leading-none sm:flex">
-            <span className="font-minecraft text-sm uppercase tracking-[0.12em] text-white">
-              Brassworks
-            </span>
-            <span className="mb-[0.3em] mt-[0.1em] ml-[-0.05em] text-[9px] font-medium uppercase tracking-[0.14em] text-white/50">
-              Made to Create
-            </span>
-          </span>
-        </a>
-
-        <nav
-          className="ml-8 hidden items-center gap-0.5 lg:flex xl:ml-10"
-          aria-label="Main navigation"
-          onBlur={(event) => {
-            const nextTarget = event.relatedTarget;
-
-            if (
-              nextTarget instanceof Node &&
-              event.currentTarget.contains(nextTarget)
-            ) {
-              return;
-            }
-
-            setDesktopDropdown(null);
-          }}
-        >
-          {modpacks.length > 0 ? (
-            <DesktopModpacksMenu
-              items={modpacks}
-              open={desktopDropdown === "modpacks"}
-              onToggle={() =>
-                setDesktopDropdown((current) =>
-                  current === "modpacks" ? null : "modpacks",
-                )
-              }
-              onNavigate={closeDesktopDropdown}
-            />
-          ) : (
-            <a
-              href="/#creations"
-              onClick={closeDesktopDropdown}
-              className="site-accent-hover rounded-md px-3 py-2 text-xs font-semibold uppercase tracking-[0.08em] text-white/65 transition-colors duration-300 hover:bg-white/5 hover:text-[#d9b86e] xl:px-4"
-            >
-              Modpacks
-            </a>
-          )}
-          <DesktopCommunityMenu
-            open={desktopDropdown === "community"}
-            onToggle={() =>
-              setDesktopDropdown((current) =>
-                current === "community" ? null : "community",
-              )
-            }
-            onNavigate={closeDesktopDropdown}
-          />
-          {navigation.map((item) => (
-            <a
-              key={item.label}
-              href={item.href}
-              onClick={closeDesktopDropdown}
-              className="site-accent-hover rounded-md px-3 py-2 text-xs font-semibold uppercase tracking-[0.08em] text-white/65 transition-colors duration-300 hover:bg-white/5 hover:text-[#d9b86e] xl:px-4"
-            >
-              {item.label}
-            </a>
-          ))}
-        </nav>
-
-        <div className="ml-auto flex items-center gap-2 sm:gap-3">
-          <a
-            href={DISCORD_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="site-primary-button group/button relative inline-flex h-10 min-w-[112px] items-center justify-center overflow-hidden rounded-lg bg-[#c7a35a] px-5 text-[12px] font-bold uppercase tracking-[0.08em] text-[#171614] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#dec17c] sm:min-w-[120px] sm:px-6"
+      <>
+          <SiteAnnouncement />
+          <header
+              ref={headerRef}
+              className="site-header fixed inset-x-0 top-0 z-50 h-[60px] bg-[#171614]/95 font-sans text-white backdrop-blur-md"
           >
-            <ButtonWipe/>
-            <span className="relative z-10">Join Now</span>
-          </a>
-
-          <a
-            href="/launcher"
-            className="site-accent-hover hidden rounded-md px-2 py-2 text-xs font-semibold uppercase tracking-[0.08em] text-white/65 transition-colors duration-300 hover:text-[#d9b86e] sm:inline-flex"
-          >
-            Launcher
-          </a>
-          <a
-            href="/roadmap"
-            className="site-accent-hover hidden rounded-md px-2 py-2 text-xs font-semibold uppercase tracking-[0.08em] text-white/65 transition-colors duration-300 hover:text-[#d9b86e] xl:inline-flex"
-          >
-            Roadmap
-          </a>
-
-          <button
-            type="button"
-            className="site-accent-hover flex h-10 w-10 items-center justify-center rounded-lg text-white/75 transition-colors hover:bg-white/5 hover:text-[#d9b86e] lg:hidden"
-            aria-label={menuOpen ? "Close navigation" : "Open navigation"}
-            aria-expanded={menuOpen}
-            onClick={toggleMenu}
-          >
-            {menuOpen ? <X size={20}/> : <Menu size={20}/>}
-          </button>
-        </div>
-      </div>
-
-      <div
-        className={`site-header-panel absolute inset-x-0 top-full overflow-y-auto bg-[#171614]/98 backdrop-blur-md transition-[max-height,opacity,background-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] lg:hidden ${
-          menuOpen ? "max-h-[calc(100vh-60px)] opacity-100" : "pointer-events-none max-h-0 opacity-0"
-        }`}
-      >
-        <nav className="grid gap-1 px-4 py-4 sm:px-8" aria-label="Mobile navigation">
-          <button
-            type="button"
-            onClick={() => setMobileDropdown((current) => current === "modpacks" ? null : "modpacks")}
-            className="site-accent-hover flex items-center justify-between rounded-lg px-4 py-3 text-left text-xs font-semibold uppercase tracking-[0.08em] text-white/70 transition-colors hover:bg-white/5 hover:text-[#d9b86e]"
-            aria-expanded={mobileDropdown === "modpacks"}
-          >
-            Modpacks
-            <ChevronDown
-              size={16}
-              className={`transition-transform duration-500 ${mobileDropdown === "modpacks" ? "rotate-180" : ""}`}
-            />
-          </button>
-          <div
-            className="header-mobile-dropdown"
-            data-open={mobileDropdown === "modpacks"}
-          >
-            <div className="min-h-0 overflow-hidden">
-              <div className={`grid gap-2 px-2 pb-2 ${modpacks.length > 1 ? "sm:grid-cols-2" : "grid-cols-1"}`}>
-                {modpacks.map((item) => (
-                  <ModpackPreview key={item.id} item={item} onNavigate={closeMenu}/>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <button
-            type="button"
-            onClick={() => setMobileDropdown((current) => current === "community" ? null : "community")}
-            className="site-accent-hover flex items-center justify-between rounded-lg px-4 py-3 text-left text-xs font-semibold uppercase tracking-[0.08em] text-white/70 transition-colors hover:bg-white/5 hover:text-[#d9b86e]"
-            aria-expanded={mobileDropdown === "community"}
-          >
-            Community
-            <ChevronDown
-              size={16}
-              className={`transition-transform duration-500 ${mobileDropdown === "community" ? "rotate-180" : ""}`}
-            />
-          </button>
-          <div
-            className="header-mobile-dropdown"
-            data-open={mobileDropdown === "community"}
-          >
-            <div className="min-h-0 overflow-hidden">
-              <div className="grid gap-1 px-2 pb-2 sm:grid-cols-2">
-                {[...communityLinks, ...partnerLinks].map((item) => (
+              <div className="mx-auto flex h-full w-full max-w-[1600px] items-center px-4 sm:px-8 lg:px-[60px]">
                   <a
-                    key={item.label}
-                    href={item.href}
-                    {...externalLinkProps(item.href)}
-                    onClick={closeMenu}
-                    className="site-accent-hover rounded-lg bg-white/4 px-3 py-3 transition-colors hover:bg-white/7"
+                      href="/"
+                      className="flex shrink-0 items-center gap-3 outline-none"
+                      aria-label="Brassworks home"
                   >
-                    <span className="block font-minecraft text-[11px] font-bold text-white">
-                      {item.label}
-                    </span>
-                    <span className="mt-1 block text-[11px] font-medium leading-4 text-white/45">
-                      {item.description}
-                    </span>
+                      <img
+                          src={assetUrl("/icon.png")}
+                          alt=""
+                          className="h-[35px] w-[35px] object-contain"
+                      />
+                      <span className="hidden flex-col leading-none sm:flex">
+                          <span className="font-minecraft text-sm uppercase tracking-[0.12em] text-white">
+                              Brassworks
+                          </span>
+                          <span className="mb-[0.3em] mt-[0.1em] ml-[-0.05em] text-[9px] font-medium uppercase tracking-[0.14em] text-white/50">
+                              Made to Create
+                          </span>
+                      </span>
                   </a>
-                ))}
+
+                  <nav
+                      className="ml-8 hidden items-center gap-0.5 lg:flex xl:ml-10"
+                      aria-label="Main navigation"
+                      onBlur={(event) => {
+                          const nextTarget = event.relatedTarget;
+
+                          if (
+                              nextTarget instanceof Node &&
+                              event.currentTarget.contains(nextTarget)
+                          ) {
+                              return;
+                          }
+
+                          setDesktopDropdown(null);
+                      }}
+                  >
+                      {modpacks.length > 0 ? (
+                          <DesktopModpacksMenu
+                              items={modpacks}
+                              open={desktopDropdown === "modpacks"}
+                              onToggle={() =>
+                                  setDesktopDropdown((current) =>
+                                      current === "modpacks"
+                                          ? null
+                                          : "modpacks",
+                                  )
+                              }
+                              onNavigate={closeDesktopDropdown}
+                          />
+                      ) : (
+                          <a
+                              href="/#creations"
+                              onClick={closeDesktopDropdown}
+                              className="site-accent-hover rounded-md px-3 py-2 text-xs font-semibold uppercase tracking-[0.08em] text-white/65 transition-colors duration-300 hover:bg-white/5 hover:text-[#d9b86e] xl:px-4"
+                          >
+                              Modpacks
+                          </a>
+                      )}
+                      <DesktopCommunityMenu
+                          open={desktopDropdown === "community"}
+                          onToggle={() =>
+                              setDesktopDropdown((current) =>
+                                  current === "community" ? null : "community",
+                              )
+                          }
+                          onNavigate={closeDesktopDropdown}
+                      />
+                      {navigation.map((item) => (
+                          <a
+                              key={item.label}
+                              href={item.href}
+                              onClick={closeDesktopDropdown}
+                              className="site-accent-hover rounded-md px-3 py-2 text-xs font-semibold uppercase tracking-[0.08em] text-white/65 transition-colors duration-300 hover:bg-white/5 hover:text-[#d9b86e] xl:px-4"
+                          >
+                              {item.label}
+                          </a>
+                      ))}
+                  </nav>
+
+                  <div className="ml-auto flex items-center gap-2 sm:gap-3">
+                      <a
+                          href={DISCORD_URL}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="site-primary-button group/button relative inline-flex h-10 min-w-[112px] items-center justify-center overflow-hidden rounded-lg bg-[#c7a35a] px-5 text-[12px] font-bold uppercase tracking-[0.08em] text-[#171614] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#dec17c] sm:min-w-[120px] sm:px-6"
+                      >
+                          <ButtonWipe />
+                          <span className="relative z-10">Join Now</span>
+                      </a>
+
+                      <a
+                          href="/launcher"
+                          className="site-accent-hover hidden rounded-md px-2 py-2 text-xs font-semibold uppercase tracking-[0.08em] text-white/65 transition-colors duration-300 hover:text-[#d9b86e] sm:inline-flex"
+                      >
+                          Launcher
+                      </a>
+                      <a
+                          href="/roadmap"
+                          className="site-accent-hover hidden rounded-md px-2 py-2 text-xs font-semibold uppercase tracking-[0.08em] text-white/65 transition-colors duration-300 hover:text-[#d9b86e] xl:inline-flex"
+                      >
+                          Roadmap
+                      </a>
+                      <a
+                          href="https://ko-fi.com/brassworks"
+                          className="site-accent-hover hidden rounded-md px-2 py-2 text-xs font-semibold uppercase tracking-[0.08em] text-white/65 transition-colors duration-300 hover:text-[#d9b86e] xl:inline-flex"
+                      >
+                          Donate
+                      </a>
+
+                      <button
+                          type="button"
+                          className="site-accent-hover flex h-10 w-10 items-center justify-center rounded-lg text-white/75 transition-colors hover:bg-white/5 hover:text-[#d9b86e] lg:hidden"
+                          aria-label={
+                              menuOpen ? "Close navigation" : "Open navigation"
+                          }
+                          aria-expanded={menuOpen}
+                          onClick={toggleMenu}
+                      >
+                          {menuOpen ? <X size={20} /> : <Menu size={20} />}
+                      </button>
+                  </div>
               </div>
-            </div>
-          </div>
 
-          {navigation.map((item) => (
-            <a
-              key={item.label}
-              href={item.href}
-              onClick={closeMenu}
-              className="site-accent-hover rounded-lg px-4 py-3 text-xs font-semibold uppercase tracking-[0.08em] text-white/70 transition-colors hover:bg-white/5 hover:text-[#d9b86e]"
-            >
-              {item.label}
-            </a>
-          ))}
+              <div
+                  className={`site-header-panel absolute inset-x-0 top-full overflow-y-auto bg-[#171614]/98 backdrop-blur-md transition-[max-height,opacity,background-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] lg:hidden ${
+                      menuOpen
+                          ? "max-h-[calc(100vh-60px)] opacity-100"
+                          : "pointer-events-none max-h-0 opacity-0"
+                  }`}
+              >
+                  <nav
+                      className="grid gap-1 px-4 py-4 sm:px-8"
+                      aria-label="Mobile navigation"
+                  >
+                      <button
+                          type="button"
+                          onClick={() =>
+                              setMobileDropdown((current) =>
+                                  current === "modpacks" ? null : "modpacks",
+                              )
+                          }
+                          className="site-accent-hover flex items-center justify-between rounded-lg px-4 py-3 text-left text-xs font-semibold uppercase tracking-[0.08em] text-white/70 transition-colors hover:bg-white/5 hover:text-[#d9b86e]"
+                          aria-expanded={mobileDropdown === "modpacks"}
+                      >
+                          Modpacks
+                          <ChevronDown
+                              size={16}
+                              className={`transition-transform duration-500 ${mobileDropdown === "modpacks" ? "rotate-180" : ""}`}
+                          />
+                      </button>
+                      <div
+                          className="header-mobile-dropdown"
+                          data-open={mobileDropdown === "modpacks"}
+                      >
+                          <div className="min-h-0 overflow-hidden">
+                              <div
+                                  className={`grid gap-2 px-2 pb-2 ${modpacks.length > 1 ? "sm:grid-cols-2" : "grid-cols-1"}`}
+                              >
+                                  {modpacks.map((item) => (
+                                      <ModpackPreview
+                                          key={item.id}
+                                          item={item}
+                                          onNavigate={closeMenu}
+                                      />
+                                  ))}
+                              </div>
+                          </div>
+                      </div>
 
-          <div className="mt-2 grid grid-cols-2 gap-2 pt-3">
-            <a
-              href="/launcher"
-              onClick={closeMenu}
-              className="site-accent-hover rounded-lg bg-white/5 px-4 py-3 text-center text-xs font-semibold uppercase tracking-[0.08em] text-white/70 transition-colors hover:text-[#d9b86e]"
-            >
-              Launcher
-            </a>
-            <a
-              href="/roadmap"
-              onClick={closeMenu}
-              className="site-accent-hover rounded-lg bg-white/5 px-4 py-3 text-center text-xs font-semibold uppercase tracking-[0.08em] text-white/70 transition-colors hover:text-[#d9b86e]"
-            >
-              Roadmap
-            </a>
-          </div>
-        </nav>
-      </div>
-      </header>
-    </>
+                      <button
+                          type="button"
+                          onClick={() =>
+                              setMobileDropdown((current) =>
+                                  current === "community" ? null : "community",
+                              )
+                          }
+                          className="site-accent-hover flex items-center justify-between rounded-lg px-4 py-3 text-left text-xs font-semibold uppercase tracking-[0.08em] text-white/70 transition-colors hover:bg-white/5 hover:text-[#d9b86e]"
+                          aria-expanded={mobileDropdown === "community"}
+                      >
+                          Community
+                          <ChevronDown
+                              size={16}
+                              className={`transition-transform duration-500 ${mobileDropdown === "community" ? "rotate-180" : ""}`}
+                          />
+                      </button>
+                      <div
+                          className="header-mobile-dropdown"
+                          data-open={mobileDropdown === "community"}
+                      >
+                          <div className="min-h-0 overflow-hidden">
+                              <div className="grid gap-1 px-2 pb-2 sm:grid-cols-2">
+                                  {[...communityLinks, ...partnerLinks].map(
+                                      (item) => (
+                                          <a
+                                              key={item.label}
+                                              href={item.href}
+                                              {...externalLinkProps(item.href)}
+                                              onClick={closeMenu}
+                                              className="site-accent-hover rounded-lg bg-white/4 px-3 py-3 transition-colors hover:bg-white/7"
+                                          >
+                                              <span className="block font-minecraft text-[11px] font-bold text-white">
+                                                  {item.label}
+                                              </span>
+                                              <span className="mt-1 block text-[11px] font-medium leading-4 text-white/45">
+                                                  {item.description}
+                                              </span>
+                                          </a>
+                                      ),
+                                  )}
+                              </div>
+                          </div>
+                      </div>
+
+                      {navigation.map((item) => (
+                          <a
+                              key={item.label}
+                              href={item.href}
+                              onClick={closeMenu}
+                              className="site-accent-hover rounded-lg px-4 py-3 text-xs font-semibold uppercase tracking-[0.08em] text-white/70 transition-colors hover:bg-white/5 hover:text-[#d9b86e]"
+                          >
+                              {item.label}
+                          </a>
+                      ))}
+
+                      <div className="mt-2 grid grid-cols-3 gap-2 pt-3">
+                          <a
+                              href="/launcher"
+                              onClick={closeMenu}
+                              className="site-accent-hover rounded-lg bg-white/5 px-4 py-3 text-center text-xs font-semibold uppercase tracking-[0.08em] text-white/70 transition-colors hover:text-[#d9b86e]"
+                          >
+                              Launcher
+                          </a>
+                          <a
+                              href="/roadmap"
+                              onClick={closeMenu}
+                              className="site-accent-hover rounded-lg bg-white/5 px-4 py-3 text-center text-xs font-semibold uppercase tracking-[0.08em] text-white/70 transition-colors hover:text-[#d9b86e]"
+                          >
+                              Roadmap
+                          </a>
+                          <a
+                              href="https://ko-fi.com/brassworks"
+                              onClick={closeMenu}
+                              className="site-accent-hover rounded-lg bg-white/5 px-4 py-3 text-center text-xs font-semibold uppercase tracking-[0.08em] text-white/70 transition-colors hover:text-[#d9b86e]"
+                          >
+                              Donate
+                          </a>
+                      </div>
+                  </nav>
+              </div>
+          </header>
+      </>
   );
 }

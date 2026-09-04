@@ -306,7 +306,7 @@ export function HeroSection() {
             />
             <div className="relative z-10 hidden w-full justify-start overflow-x-auto overscroll-x-contain py-3 [scrollbar-color:#7d693f_transparent] md:flex lg:py-4 2xl:justify-center">
               <div
-                className="ml-0 grid w-[1100px] min-w-[1100px] grid-cols-5 gap-3 2xl:mx-auto 2xl:w-full 2xl:min-w-0 2xl:max-w-[1450px] 2xl:gap-4"
+                className="mx-auto grid w-max shrink-0 grid-flow-col auto-cols-[210px] gap-3 2xl:auto-cols-[270px] 2xl:gap-4"
                 role="tablist"
                 aria-label="Select a creation"
               >

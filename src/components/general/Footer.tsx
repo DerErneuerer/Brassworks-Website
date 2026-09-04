@@ -40,6 +40,7 @@ const footerGroups = [
       { label: "Media", href: "/#media" },
       { label: "Launcher", href: "/launcher" },
       { label: "Roadmap", href: "/roadmap" },
+      { label: "Finances", href: "/finances" },
       { label: "Maven", href: MAVEN_URL },
     ],
   },
