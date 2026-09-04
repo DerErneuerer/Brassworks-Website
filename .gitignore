@@ -265,3 +265,5 @@ __unconfig*
 todos.json
 *.tsbuildinfo
 .tsbuildinfo
+/.idea/
+/.vscode/
