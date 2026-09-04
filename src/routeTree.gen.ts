@@ -10,33 +10,115 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CommunityRouteImport } from './routes/community'
+import { Route as LauncherRouteImport } from './routes/launcher'
+import { Route as ModpacksRouteImport } from './routes/modpacks'
+import { Route as RoadmapRouteImport } from './routes/roadmap'
+import { Route as NewsIndexRouteImport } from './routes/news/index'
+import { Route as NewsSlugRouteImport } from './routes/news/$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CommunityRoute = CommunityRouteImport.update({
+  id: '/community',
+  path: '/community',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LauncherRoute = LauncherRouteImport.update({
+  id: '/launcher',
+  path: '/launcher',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ModpacksRoute = ModpacksRouteImport.update({
+  id: '/modpacks',
+  path: '/modpacks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RoadmapRoute = RoadmapRouteImport.update({
+  id: '/roadmap',
+  path: '/roadmap',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewsIndexRoute = NewsIndexRouteImport.update({
+  id: '/news/',
+  path: '/news/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewsSlugRoute = NewsSlugRouteImport.update({
+  id: '/news/$slug',
+  path: '/news/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/community': typeof CommunityRoute
+  '/launcher': typeof LauncherRoute
+  '/modpacks': typeof ModpacksRoute
+  '/roadmap': typeof RoadmapRoute
+  '/news/$slug': typeof NewsSlugRoute
+  '/news/': typeof NewsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/community': typeof CommunityRoute
+  '/launcher': typeof LauncherRoute
+  '/modpacks': typeof ModpacksRoute
+  '/roadmap': typeof RoadmapRoute
+  '/news/$slug': typeof NewsSlugRoute
+  '/news': typeof NewsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/community': typeof CommunityRoute
+  '/launcher': typeof LauncherRoute
+  '/modpacks': typeof ModpacksRoute
+  '/roadmap': typeof RoadmapRoute
+  '/news/$slug': typeof NewsSlugRoute
+  '/news/': typeof NewsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/community'
+    | '/launcher'
+    | '/modpacks'
+    | '/roadmap'
+    | '/news/$slug'
+    | '/news/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/community'
+    | '/launcher'
+    | '/modpacks'
+    | '/roadmap'
+    | '/news/$slug'
+    | '/news'
+  id:
+    | '__root__'
+    | '/'
+    | '/community'
+    | '/launcher'
+    | '/modpacks'
+    | '/roadmap'
+    | '/news/$slug'
+    | '/news/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CommunityRoute: typeof CommunityRoute
+  LauncherRoute: typeof LauncherRoute
+  ModpacksRoute: typeof ModpacksRoute
+  RoadmapRoute: typeof RoadmapRoute
+  NewsSlugRoute: typeof NewsSlugRoute
+  NewsIndexRoute: typeof NewsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +130,59 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/community': {
+      id: '/community'
+      path: '/community'
+      fullPath: '/community'
+      preLoaderRoute: typeof CommunityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/launcher': {
+      id: '/launcher'
+      path: '/launcher'
+      fullPath: '/launcher'
+      preLoaderRoute: typeof LauncherRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/modpacks': {
+      id: '/modpacks'
+      path: '/modpacks'
+      fullPath: '/modpacks'
+      preLoaderRoute: typeof ModpacksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/roadmap': {
+      id: '/roadmap'
+      path: '/roadmap'
+      fullPath: '/roadmap'
+      preLoaderRoute: typeof RoadmapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/news/': {
+      id: '/news/'
+      path: '/news'
+      fullPath: '/news/'
+      preLoaderRoute: typeof NewsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/news/$slug': {
+      id: '/news/$slug'
+      path: '/news/$slug'
+      fullPath: '/news/$slug'
+      preLoaderRoute: typeof NewsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CommunityRoute: CommunityRoute,
+  LauncherRoute: LauncherRoute,
+  ModpacksRoute: ModpacksRoute,
+  RoadmapRoute: RoadmapRoute,
+  NewsSlugRoute: NewsSlugRoute,
+  NewsIndexRoute: NewsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

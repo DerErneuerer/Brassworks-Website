@@ -1,48 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { assetUrl } from "../../lib/assets.js";
-
-type SlideLogo = {
-  source: string;
-  alt: string;
-  href: string;
-  newTab: boolean;
-  width: string;
-  positionX: string;
-  positionY: string;
-  opacity: number;
-};
-
-type Slide = {
-  id: number;
-  title: string;
-  subtitle: string;
-  video: string;
-  thumbnail: string | null;
-  logo: SlideLogo | null;
-};
+import { useHeroSlides } from "../../features/hero/use-hero-slides";
 
 type PauseReason = "visibility";
 
 const CROSSFADE_DURATION = 1_800;
-const SERVER_URL = "https://modrinth.com/server/brassworks-smp-official-server";
-
-const slides: Slide[] = Array.from({ length: 5 }, (_, index) => ({
-  id: index + 1,
-  title: "Create: Brassworks",
-  subtitle: "Season 2",
-  video: assetUrl("/videos/background.mp4"),
-  thumbnail: null,
-  logo: {
-    source: assetUrl("/images/seasons/season2.png"),
-    alt: "Brassworks Season 2",
-    href: SERVER_URL,
-    newTab: true,
-    width: "min(560px, 70vw)",
-    positionX: "50%",
-    positionY: "45%",
-    opacity: 1,
-  },
-}));
 
 function waitUntilReady(video: HTMLVideoElement): Promise<void> {
   if (video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
@@ -64,6 +25,7 @@ function waitUntilReady(video: HTMLVideoElement): Promise<void> {
 }
 
 export function HeroSection() {
+  const { data: slides = [], isPending, isError } = useHeroSlides();
   const [activeIndex, setActiveIndex] = useState(0);
   const [progress, setProgress] = useState(0);
   const activeIndexRef = useRef(0);
@@ -73,8 +35,6 @@ export function HeroSection() {
   const switchToken = useRef(0);
   const pendingIndex = useRef(0);
   const mounted = useRef(false);
-
-  const activeSlide = slides[activeIndex];
 
   const pauseAllVideos = useCallback(() => {
     videoElements.current.forEach((video) => video?.pause());
@@ -107,9 +67,7 @@ export function HeroSection() {
 
     await waitUntilReady(video);
 
-    if (!mounted.current || pauseReasons.current.size > 0) {
-      return;
-    }
+    if (!mounted.current || pauseReasons.current.size > 0) return;
 
     try {
       await video.play();
@@ -137,6 +95,8 @@ export function HeroSection() {
 
   const selectSlide = useCallback(
     async (index: number) => {
+      if (slides.length === 0) return;
+
       const normalizedIndex = (index + slides.length) % slides.length;
       const token = ++switchToken.current;
 
@@ -170,8 +130,17 @@ export function HeroSection() {
         });
       }, CROSSFADE_DURATION);
     },
-    [startVideo],
+    [slides.length, startVideo],
   );
+
+  useEffect(() => {
+    if (activeIndex >= slides.length) {
+      activeIndexRef.current = 0;
+      pendingIndex.current = 0;
+      setActiveIndex(0);
+      setProgress(0);
+    }
+  }, [activeIndex, slides.length]);
 
   useEffect(() => {
     mounted.current = true;
@@ -253,7 +222,17 @@ export function HeroSection() {
       window.removeEventListener("pagehide", handlePageHide);
       window.removeEventListener("pageshow", handlePageShow);
     };
-  }, [pauseAllVideos, pauseCarousel, resumeCarousel, startVideo]);
+  }, [
+    pauseAllVideos,
+    pauseCarousel,
+    resumeCarousel,
+    slides.length,
+    startVideo,
+  ]);
+
+  if (isPending || isError || slides.length === 0) return null;
+
+  const activeSlide = slides[activeIndex] ?? slides[0];
 
   return (
     <section
@@ -280,7 +259,7 @@ export function HeroSection() {
                 }`}
                 muted
                 playsInline
-                preload="auto"
+                preload={isActive ? "auto" : "metadata"}
                 aria-hidden={!isActive}
                 aria-label={
                   isActive ? `${slide.title}, ${slide.subtitle}` : undefined
@@ -295,33 +274,26 @@ export function HeroSection() {
                   }
                 }}
               >
-                <source src={slide.video} type="video/mp4" />
+                <source src={slide.video} type="video/mp4"/>
               </video>
             );
           })}
 
           {activeSlide.logo ? (
-            <div className="pointer-events-none absolute inset-0 z-[3]">
+            <div className="pointer-events-none absolute inset-0 z-[3] flex -translate-y-8 items-center justify-center p-8 md:-translate-y-10 md:p-16">
               <a
                 key={activeSlide.id}
-                href={activeSlide.logo.href}
-                target={activeSlide.logo.newTab ? "_blank" : "_self"}
-                rel={
-                  activeSlide.logo.newTab ? "noopener noreferrer" : undefined
-                }
-                className="pointer-events-auto absolute -translate-x-1/2 -translate-y-1/2 transition-transform duration-300 ease-out hover:scale-105"
-                style={{
-                  width: activeSlide.logo.width,
-                  left: activeSlide.logo.positionX,
-                  top: activeSlide.logo.positionY,
-                  opacity: activeSlide.logo.opacity,
-                }}
+                href={activeSlide.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="pointer-events-auto flex h-[clamp(140px,20vh,200px)] w-[min(580px,64vw)] cursor-pointer items-center justify-center transition-transform duration-300 ease-out hover:scale-105"
               >
                 <img
                   src={activeSlide.logo.source}
                   alt={activeSlide.logo.alt}
-                  className="h-auto w-full select-none object-contain [image-rendering:pixelated]"
+                  className="h-full w-full select-none object-contain [image-rendering:pixelated]"
                   draggable="false"
+                  decoding="async"
                 />
               </a>
             </div>
@@ -348,7 +320,7 @@ export function HeroSection() {
                       role="tab"
                       aria-selected={isActive}
                       aria-label={`Show ${slide.title}, item ${index + 1} of ${slides.length}`}
-                      className={`relative grid h-[62px] min-w-0 grid-cols-[52px_minmax(0,1fr)] items-center gap-2 overflow-hidden rounded-md border-[1.5px] bg-transparent p-1.5 text-left transition-colors md:h-[68px] md:grid-cols-[65px_minmax(0,1fr)] md:gap-3 ${
+                      className={`relative grid h-[62px] min-w-0 cursor-pointer grid-cols-[52px_minmax(0,1fr)] items-center gap-2 overflow-hidden rounded-md border-[1.5px] bg-transparent p-1.5 text-left transition-colors md:h-[68px] md:grid-cols-[65px_minmax(0,1fr)] md:gap-3 ${
                         isActive
                           ? "border-[#d9b86e]"
                           : "border-white/30 hover:border-white/70"
@@ -361,9 +333,7 @@ export function HeroSection() {
                       >
                         <span
                           className="block h-full bg-[#c7a35a]/50 transition-[width] duration-75 ease-linear"
-                          style={{
-                            width: isActive ? `${progress}%` : "0%",
-                          }}
+                          style={{ width: isActive ? `${progress}%` : "0%" }}
                         />
                       </span>
 
@@ -374,6 +344,7 @@ export function HeroSection() {
                             alt={`${slide.title} preview`}
                             className="h-full w-full object-cover"
                             draggable="false"
+                            decoding="async"
                           />
                         ) : (
                           <video
@@ -383,7 +354,7 @@ export function HeroSection() {
                             preload="metadata"
                             aria-hidden="true"
                           >
-                            <source src={slide.video} type="video/mp4" />
+                            <source src={slide.video} type="video/mp4"/>
                           </video>
                         )}
                       </span>
@@ -405,12 +376,12 @@ export function HeroSection() {
         </div>
 
         <a
-          href={SERVER_URL}
+          href={activeSlide.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="group/button absolute bottom-2 right-2 z-30 inline-flex h-11 w-[160px] items-center justify-center overflow-hidden rounded-lg bg-[#c7a35a] px-4 text-[11px] font-bold uppercase tracking-[0.08em] text-[#171614] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#dec17c] md:bottom-[5px] md:right-[5px] md:h-[52px] md:w-auto md:min-w-[230px] md:px-7 md:text-sm"
+          className="group/button absolute bottom-2 right-2 z-30 inline-flex h-11 w-[160px] cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-[#c7a35a] px-4 text-[11px] font-bold uppercase tracking-[0.08em] text-[#171614] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#dec17c] md:bottom-[5px] md:right-[5px] md:h-[52px] md:w-auto md:min-w-[230px] md:px-7 md:text-sm"
         >
-          <span className="absolute inset-y-0 -left-1/3 w-[140%] -translate-x-full -skew-x-[24deg] bg-[#dec17c] transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/button:translate-x-0" />
+          <span className="absolute inset-y-0 -left-1/3 w-[140%] -translate-x-full -skew-x-[24deg] bg-[#dec17c] transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/button:translate-x-0"/>
           <span className="relative z-10">See more</span>
         </a>
       </div>

@@ -6,21 +6,34 @@ import { ModsSection } from "../components/general/ModsSection.tsx";
 import { TeamSection } from "../components/general/TeamSection.tsx";
 import { NewsSection } from "../components/general/NewsSection.tsx";
 import { MediaSection } from "../components/general/MediaSection.tsx";
+import { ClosingSection } from "../components/general/ClosingSection.tsx";
+import { Footer } from "../components/general/Footer.tsx";
+import { createPageMetadata } from "../lib/seo.ts";
 
-export const Route = createFileRoute("/")({ component: IndexRoute });
+export const Route = createFileRoute("/")({
+    head: () => createPageMetadata({
+        title: "Brassworks | Made to Create",
+        description:
+            "Discover Brassworks mods, modpacks, community projects, news, media, and the Brassworks Launcher.",
+        path: "/",
+    }),
+    component: IndexRoute,
+});
 
 function IndexRoute() {
     return (
         <>
-            <Header />
+            <Header/>
             <main>
-                <HeroSection />
-                <CreationsSection />
-                <ModsSection />
-                <TeamSection />
-                <NewsSection />
-                <MediaSection />
+                <HeroSection/>
+                <CreationsSection/>
+                <ModsSection/>
+                <TeamSection/>
+                <NewsSection/>
+                <MediaSection/>
+                <ClosingSection/>
             </main>
+            <Footer/>
         </>
     );
 }
