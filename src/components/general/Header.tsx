@@ -31,9 +31,8 @@ type CommunityMenuItem = {
 };
 
 const navigation = [
-  { label: "Team", href: "/#team" },
-  { label: "Projects", href: "/#mods" },
-  { label: "News", href: "/news" },
+    { label: "Finances", href: "/finances" },
+    { label: "News", href: "/news" },
 ];
 
 const communityLinks: CommunityMenuItem[] = [
@@ -473,12 +472,6 @@ export function Header() {
                       >
                           Roadmap
                       </a>
-                      <a
-                          href="https://ko-fi.com/brassworks"
-                          className="site-accent-hover hidden rounded-md px-2 py-2 text-xs font-semibold uppercase tracking-[0.08em] text-white/65 transition-colors duration-300 hover:text-[#d9b86e] xl:inline-flex"
-                      >
-                          Donate
-                      </a>
 
                       <button
                           type="button"
@@ -609,13 +602,6 @@ export function Header() {
                               className="site-accent-hover rounded-lg bg-white/5 px-4 py-3 text-center text-xs font-semibold uppercase tracking-[0.08em] text-white/70 transition-colors hover:text-[#d9b86e]"
                           >
                               Roadmap
-                          </a>
-                          <a
-                              href="https://ko-fi.com/brassworks"
-                              onClick={closeMenu}
-                              className="site-accent-hover rounded-lg bg-white/5 px-4 py-3 text-center text-xs font-semibold uppercase tracking-[0.08em] text-white/70 transition-colors hover:text-[#d9b86e]"
-                          >
-                              Donate
                           </a>
                       </div>
                   </nav>

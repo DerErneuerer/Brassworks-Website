@@ -6,18 +6,15 @@ import {
   WalletCards,
 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
-import {
-  buildFinanceTree,
-  type FinanceKind,
-  type FinanceNode,
-} from "../../features/finances/finance.service";
+import { buildFinanceTree } from "../../features/finances/finance.service";
+import type {FinanceKind, FinanceNode} from "../../features/finances/finance.service";
 import { useFinances } from "../../features/finances/use-finances";
 import { ButtonWipe } from "../general/ButtonWipe";
 import { Footer } from "../general/Footer";
 import { Header } from "../general/Header";
 import { FinanceTreemap } from "./FinanceTreemap.tsx";
 
-const SUPPORT_URL = "https://discord.gg/brassworks";
+const SUPPORT_URL = "https://ko-fi.com/brassworks";
 
 function sumNodes(nodes: FinanceNode[]): number {
   return nodes.reduce((sum, node) => sum + node.amount, 0);
